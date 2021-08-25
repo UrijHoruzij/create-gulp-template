@@ -1,0 +1,40 @@
+{
+  "name": "create-gulp-template",
+  "version": "1.0.0",
+  "main": "src/cli.js",
+  "bin": {
+    "@UrijHoruzij/create-gulp-template": "bin/create-gulp-template",
+    "create-gulp-template": "bin/create-gulp-template",
+    "cgt": "bin/create-gulp-template"
+  },
+  "scripts": {
+    "start": "node src/cli.js"
+  },
+  "keywords": [
+    "cli",
+    "gulp",
+    "sass",
+    "scss",
+    "less",
+    "stylus",
+    "pug"
+  ],
+  "author": "Urij Horuzij",
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^5.0.1",
+    "chalk": "^4.1.2",
+    "clear": "^0.1.0",
+    "esm": "^3.2.25",
+    "execa": "^5.0.0",
+    "figlet": "^1.5.0",
+    "gitignore": "^0.7.0",
+    "inquirer": "^8.1.2",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0",
+    "spdx-license-list": "^6.4.0",
+    "util": "^0.12.4"
+  },
+  "description": ""
+}

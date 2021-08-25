@@ -1,0 +1,42 @@
+{
+  "name": "html5-css-javascript",
+  "description": "",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "html": "node-w3c-validator -f lint -evH -i public/**/*.html",
+    "dev": "gulp",
+    "build": "gulp build",
+    "cache": "gulp cache"
+  },
+  "keywords": [
+    "gulp",
+    "less",
+    "html5",
+    "javascript"
+  ],
+  "author": "Urij Horuzij",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-uglify-es": "^3.0.0",
+    "del": "^6.0.0",
+    "browser-sync":"^2.27.5",
+    "gulp-svg-sprite":"^1.5.0",
+    "gulp-file-include":"^2.3.0",
+    "gulp-sourcemaps":"^3.0.0",
+    "gulp-rev":"^9.0.0",
+    "gulp-rev-rewrite":"^5.0.0",
+    "gulp-rev-delete-original":"^0.2.3",
+    "gulp-htmlmin":"^5.0.1",
+    "gulp-if":"^3.0.0",
+    "gulp-notify":"^4.0.0",
+    "gulp-image":"^6.2.1",
+    "gulp-concat":"^2.6.1",
+    "gulp-less": "^5.0.0",
+    "node-w3c-validator": "^2.0.1"
+  }  
+}
