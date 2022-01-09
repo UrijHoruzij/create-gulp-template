@@ -5,27 +5,81 @@ const cleanCSS = require("gulp-clean-css");
 const uglify = require("gulp-uglify-es").default;
 const del = require("del");
 const browserSync = require("browser-sync").create();
-const stylus = require("gulp-stylus");
 const svgSprite = require("gulp-svg-sprite");
 const fileInclude = require("gulp-file-include");
 const sourcemaps = require("gulp-sourcemaps");
 const rev = require("gulp-rev");
 const revRewrite = require("gulp-rev-rewrite");
 const revDel = require("gulp-rev-delete-original");
-const htmlmin = require("gulp-htmlmin");
-
 const gulpif = require("gulp-if");
 const notify = require("gulp-notify");
 const image = require("gulp-image");
 const { readFileSync } = require("fs");
 const concat = require("gulp-concat");
+const htmlmin = require("gulp-htmlmin");
+const stylus = require("gulp-stylus");
 
 let isProd = false;
 
+const toProd = (done) => {
+  isProd = true;
+  done();
+};
 const clean = () => {
   return del(["public/*"]);
 };
-
+const cache = () => {
+  return src("public/**/*.{css,js,svg,png,jpg,jpeg,woff2}", {
+    base: "public",
+  })
+    .pipe(rev())
+    .pipe(revDel())
+    .pipe(dest("public"))
+    .pipe(rev.manifest("rev.json"))
+    .pipe(dest("public"));
+};
+const rewrite = () => {
+  const manifest = readFileSync("public/rev.json");
+  src("public/css/*.css")
+    .pipe(
+      revRewrite({
+        manifest,
+      })
+    )
+    .pipe(dest("public/css"));
+  return src("public/**/*.html")
+    .pipe(
+      revRewrite({
+        manifest,
+      })
+    )
+    .pipe(dest("public"));
+};
+const htmlMinify = () => {
+  return src("public/**/*.html")
+    .pipe(
+      htmlmin({
+        collapseWhitespace: true,
+      })
+    )
+    .pipe(dest("public"));
+};
+const resources = () => {
+  return src("./src/resources/**").pipe(dest("./public"));
+};
+const images = () => {
+  return src([
+    "./src/img/**.jpg",
+    "./src/img/**.png",
+    "./src/img/**.jpeg",
+    "./src/img/*.svg",
+    "./src/img/**/*.jpg",
+    "./src/img/**/*.png",
+    "./src/img/**/*.jpeg",
+  ])
+    .pipe(gulpif(isProd, image()))
+    .pipe(dest("./public/img"));
+};
 const svgSprites = () => {
   return src("./src/img/svg/**.svg")
     .pipe(
@@ -40,6 +94,17 @@ const svgSprites = () => {
     .pipe(dest("./public/img"));
 };
 
+const htmlInclude = () => {
+  return src(["./src/*.html"])
+    .pipe(
+      fileInclude({
+        prefix: "@",
+        basepath: "@file",
+      })
+    )
+    .pipe(dest("./public"))
+    .pipe(browserSync.stream());
+};
 const styles = () => {
   return src("./src/stylus/**/*.styl")
     .pipe(gulpif(!isProd, sourcemaps.init()))
@@ -78,36 +143,6 @@ const scripts = () => {
     .pipe(browserSync.stream());
 };
 
-const resources = () => {
-  return src("./src/resources/**").pipe(dest("./public"));
-};
-
-const images = () => {
-  return src([
-    "./src/img/**.jpg",
-    "./src/img/**.png",
-    "./src/img/**.jpeg",
-    "./src/img/*.svg",
-    "./src/img/**/*.jpg",
-    "./src/img/**/*.png",
-    "./src/img/**/*.jpeg",
-  ])
-    .pipe(gulpif(isProd, image()))
-    .pipe(dest("./public/img"));
-};
-
-const htmlInclude = () => {
-  return src(["./src/*.html"])
-    .pipe(
-      fileInclude({
-        prefix: "@",
-        basepath: "@file",
-      })
-    )
-    .pipe(dest("./public"))
-    .pipe(browserSync.stream());
-};
-
 const watchFiles = () => {
   browserSync.init({
     server: {
@@ -115,58 +150,14 @@ const watchFiles = () => {
     },
   });
 
-  watch("./src/stylus/**/*.styl", styles);
-  watch("./src/js/**/*.js", scripts);
-  watch("./src/partials/*.html", htmlInclude);
-  watch("./src/*.html", htmlInclude);
   watch("./src/resources/**", resources);
   watch("./src/img/*.{jpg,jpeg,png,svg}", images);
   watch("./src/img/**/*.{jpg,jpeg,png}", images);
   watch("./src/img/svg/**.svg", svgSprites);
-};
-
-const cache = () => {
-  return src("public/**/*.{css,js,svg,png,jpg,jpeg,woff2}", {
-    base: "public",
-  })
-    .pipe(rev())
-    .pipe(revDel())
-    .pipe(dest("public"))
-    .pipe(rev.manifest("rev.json"))
-    .pipe(dest("public"));
-};
-
-const rewrite = () => {
-  const manifest = readFileSync("public/rev.json");
-  src("public/css/*.css")
-    .pipe(
-      revRewrite({
-        manifest,
-      })
-    )
-    .pipe(dest("public/css"));
-  return src("public/**/*.html")
-    .pipe(
-      revRewrite({
-        manifest,
-      })
-    )
-    .pipe(dest("public"));
-};
-
-const htmlMinify = () => {
-  return src("public/**/*.html")
-    .pipe(
-      htmlmin({
-        collapseWhitespace: true,
-      })
-    )
-    .pipe(dest("public"));
-};
-
-const toProd = (done) => {
-  isProd = true;
-  done();
+  watch("./src/stylus/**/*.styl", styles);
+  watch("./src/js/**/*.js", scripts);
+  watch("./src/partials/*.html", htmlInclude);
+  watch("./src/*.html", htmlInclude);
 };
 
 exports.default = series(

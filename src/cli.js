@@ -3,7 +3,7 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 import clear from "clear";
 import figlet from "figlet";
-import { createProject } from "./main";
+import { createProject } from "./main.js";
 
 const parseArgumentsIntoOptions = (rawArgs) => {
   const args = arg(
