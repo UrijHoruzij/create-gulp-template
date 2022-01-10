@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+import fs from "fs";
+import { promisify } from "util";
+const writeFile = promisify(fs.writeFile);
+
+const createHTML = async (options) => {
+  const htmlTemplate = `<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -17,4 +22,12 @@
     <script src="js/vendor.js"></script>
     <script src="js/main.js"></script>
 </body>
-</html>
+</html>`;
+  switch (options.html) {
+    case "HTML5":
+      return writeFile(`${process.cwd()}/index.html`, htmlTemplate, "utf8");
+    case "Pug":
+      return;
+  }
+};
+export default createHTML;

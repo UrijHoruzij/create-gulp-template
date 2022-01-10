@@ -1,0 +1,93 @@
+import fs from "fs";
+import { promisify } from "util";
+const writeFile = promisify(fs.writeFile);
+
+const createPackage = (options) => {
+  let devDependencies = [
+    {
+      gulp: "^4.0.2",
+      "browser-sync": "^2.27.5",
+      del: "^6.0.0",
+      "gulp-if": "^3.0.0",
+      "gulp-notify": "^4.0.0",
+      "gulp-imagemin": "^8.0.0",
+      "gulp-concat": "^2.6.1",
+      "node-w3c-validator": "^2.0.1",
+      "gulp-sourcemaps": "^3.0.0",
+      "gulp-rev": "^9.0.0",
+      "gulp-rev-rewrite": "^5.0.0",
+      "gulp-rev-delete-original": "^0.2.3",
+      "gulp-autoprefixer": "^8.0.0",
+      "gulp-babel": "^8.0.0",
+      "gulp-svg-sprite": "^1.5.0",
+      "gulp-clean-css": "^4.3.0",
+      "gulp-uglify-es": "^3.0.0",
+      "gulp-htmlmin": "^5.0.1",
+    },
+  ];
+  switch (options.html) {
+    case "HTML5":
+      devDependencies.push({
+        "gulp-file-include": "^2.3.0",
+      });
+      break;
+    case "Pug":
+      break;
+  }
+  switch (options.css) {
+    case "SASS":
+      devDependencies.push({
+        sass: "^1.47.0",
+        "gulp-sass": "^5.0.0",
+      });
+      break;
+    case "LESS":
+      devDependencies.push({
+        "gulp-less": "^5.0.0",
+      });
+      break;
+    case "Stylus":
+      devDependencies.push({
+        "gulp-stylus": "^2.7.0",
+      });
+      break;
+    case "CSS3":
+      break;
+  }
+  switch (options.js) {
+    case "JavaScript":
+      devDependencies.push({
+        "@babel/preset-env": "^7.16.7",
+      });
+      break;
+    case "TypeScript":
+      devDependencies.push({
+        "@babel/preset-env": "^7.16.7",
+      });
+      break;
+  }
+  let dependencies = Object.assign({}, ...devDependencies);
+  let packageTemplate = {
+    name: "create-gulp-template",
+    description: "",
+    version: "1.0.0",
+    main: "gulpfile.js",
+    type: "module",
+    scripts: {
+      html: "node-w3c-validator -f lint -evH -i public/**/*.html",
+      dev: "gulp",
+      build: "gulp build",
+      cache: "gulp cache",
+    },
+    author: "Urij Horuzij",
+    license: "MIT",
+    devDependencies: dependencies,
+  };
+  return writeFile(
+    `${process.cwd()}/package.json`,
+    JSON.stringify(packageTemplate, null, 4),
+    "utf8"
+  );
+};
+
+export default createPackage;
