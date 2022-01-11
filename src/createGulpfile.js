@@ -7,7 +7,7 @@ const htmlLibrary = (options) => {
     case "HTML5":
       return `import fileInclude from "gulp-file-include";`;
     case "Pug":
-      return ``;
+      return `import pug from 'gulp-pug';`;
   }
 };
 const cssLibrary = (options) => {
@@ -47,7 +47,14 @@ const html = (options) => {
         .pipe(browserSync.stream());
     };`;
     case "Pug":
-      return ``;
+      return `const html = () => {
+      return src(["./*.pug"])
+        .pipe(
+          pug()
+        )
+        .pipe(dest("./public"))
+        .pipe(browserSync.stream());
+    };`;
   }
 };
 const styles = (options) => {
@@ -168,7 +175,8 @@ const watchHTML = (options) => {
       return `watch("./partials/*.html", html);
   watch("./*.html", html);`;
     case "Pug":
-      return ``;
+      return `watch("./partials/*.pug", html);
+  watch("./*.pug", html);`;
   }
 };
 const createGulpFile = async (options) => {

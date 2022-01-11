@@ -32,6 +32,11 @@ const createPackage = (options) => {
       });
       break;
     case "Pug":
+      devDependencies.push({
+        pug: "^3.0.2",
+        "gulp-pug": "^5.0.0",
+      });
+
       break;
   }
   switch (options.css) {

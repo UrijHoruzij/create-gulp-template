@@ -23,11 +23,29 @@ const createHTML = async (options) => {
     <script src="js/main.js"></script>
 </body>
 </html>`;
+  const pugTemplate = `doctype html
+html(lang="ru")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="shortcut icon" href="img/favicon.ico" type="image/x-icon")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    meta(name="theme-color" content="#111111")
+    title= "Document"
+    link(rel="stylesheet" href="css/global.css)
+    link(rel="stylesheet" href="css/vendor.css")
+    link(rel="stylesheet" href="css/main.css")
+  body
+      // include includes/head.pug
+      script(src="js/vendor.js")
+      script(src="js/main.js")`;
+
   switch (options.html) {
     case "HTML5":
       return writeFile(`${process.cwd()}/index.html`, htmlTemplate, "utf8");
     case "Pug":
-      return;
+      return writeFile(`${process.cwd()}/index.pug`, pugTemplate, "utf8");
   }
 };
 export default createHTML;
