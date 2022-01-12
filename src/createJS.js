@@ -22,6 +22,21 @@ const createJS = async (options) => {
       );
       break;
     case "TypeScript":
+      writeFile(
+        `${process.cwd()}/js/global.ts`,
+        `console.log("global");`,
+        "utf8"
+      );
+      writeFile(
+        `${process.cwd()}/js/main.ts`,
+        `/**
+        * название функции
+        *
+        * @param {number} first - первое число
+        * @returns {number}
+        */`,
+        "utf8"
+      );
       break;
   }
 };

@@ -29,7 +29,7 @@ const jsLibrary = (options) => {
     case "JavaScript":
       return ``;
     case "TypeScript":
-      return ``;
+      return `import ts from 'gulp-typescript';`;
   }
 };
 const html = (options) => {
@@ -146,7 +146,29 @@ const scripts = (options) => {
     .pipe(browserSync.stream());
 };`;
     case "TypeScript":
-      return ``;
+      return `const scripts = () => {
+  src("./ts/vendor/**.js")
+    .pipe(concat("vendor.js"))
+    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
+    .pipe(dest("./public/js/"));
+  return src([
+    "./ts/global.ts",
+    "./ts/components/**.ts",
+    "./ts/main.ts",
+  ])
+    .pipe(gulpif(!isProd, sourcemaps.init()))
+    .pipe(ts())
+    .pipe(
+      babel({
+        presets: ["@babel/env"],
+      })
+    )
+    .pipe(concat("main.js"))
+    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
+    .pipe(gulpif(!isProd, sourcemaps.write(".")))
+    .pipe(dest("./public/js"))
+    .pipe(browserSync.stream());
+};`;
   }
 };
 const watchCSS = (options) => {
@@ -166,7 +188,7 @@ const watchJS = (options) => {
     case "JavaScript":
       return `watch("./js/**/*.js", scripts);`;
     case "TypeScript":
-      return ``;
+      return `watch("./ts/**/*.ts", scripts);`;
   }
 };
 const watchHTML = (options) => {

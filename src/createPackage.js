@@ -67,6 +67,8 @@ const createPackage = (options) => {
       break;
     case "TypeScript":
       devDependencies.push({
+        typescript: "^4.5.4",
+        "gulp-typescript": "^6.0.0-alpha.1",
         "@babel/preset-env": "^7.16.7",
       });
       break;
