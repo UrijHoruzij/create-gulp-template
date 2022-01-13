@@ -30,6 +30,8 @@ const jsLibrary = (options) => {
       return ``;
     case "TypeScript":
       return `import ts from 'gulp-typescript';`;
+    case "CoffeeScript":
+      return `import coffee from 'gulp-coffee';`;
   }
 };
 const html = (options) => {
@@ -169,6 +171,30 @@ const scripts = (options) => {
     .pipe(dest("./public/js"))
     .pipe(browserSync.stream());
 };`;
+    case "CoffeeScript":
+      return `const scripts = () => {
+  src("./coffee/vendor/**.js")
+    .pipe(concat("vendor.js"))
+    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
+    .pipe(dest("./public/js/"));
+  return src([
+    "./coffee/global.coffee",
+    "./coffee/components/**.coffee",
+    "./coffee/main.coffee",
+  ])
+    .pipe(gulpif(!isProd, sourcemaps.init()))
+    .pipe(coffee({bare: true})))
+    .pipe(
+      babel({
+        presets: ["@babel/env"],
+      })
+    )
+    .pipe(concat("main.js"))
+    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
+    .pipe(gulpif(!isProd, sourcemaps.write(".")))
+    .pipe(dest("./public/js"))
+    .pipe(browserSync.stream());
+};`;
   }
 };
 const watchCSS = (options) => {
@@ -189,6 +215,8 @@ const watchJS = (options) => {
       return `watch("./js/**/*.js", scripts);`;
     case "TypeScript":
       return `watch("./ts/**/*.ts", scripts);`;
+    case "CoffeeScript":
+      return `watch("./coffee/**/*.coffee", scripts);`;
   }
 };
 const watchHTML = (options) => {

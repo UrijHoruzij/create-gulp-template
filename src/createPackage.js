@@ -72,6 +72,12 @@ const createPackage = (options) => {
         "@babel/preset-env": "^7.16.7",
       });
       break;
+    case "CoffeeScript":
+      devDependencies.push({
+        "gulp-coffee": "^3.0.3",
+        "@babel/preset-env": "^7.16.7",
+      });
+      break;
   }
   let dependencies = Object.assign({}, ...devDependencies);
   let packageTemplate = {

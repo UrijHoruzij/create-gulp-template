@@ -42,6 +42,11 @@ const createFolders = async (options) => {
       fs.mkdirSync("ts/components");
       fs.mkdirSync("ts/vendor");
       break;
+    case "CoffeeScript":
+      fs.mkdirSync("coffee");
+      fs.mkdirSync("coffee/components");
+      fs.mkdirSync("coffee/vendor");
+      break;
   }
 };
 export default createFolders;

@@ -47,7 +47,7 @@ const promptForMissingOptions = async (options) => {
       name: "js",
       type: "list",
       message: "Select the preprocessor",
-      choices: ["JavaScript", "TypeScript"],
+      choices: ["JavaScript", "TypeScript", "CoffeeScript"],
     },
   ];
   const answers = await inquirer.prompt(questions);

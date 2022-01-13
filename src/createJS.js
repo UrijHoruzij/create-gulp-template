@@ -38,6 +38,23 @@ const createJS = async (options) => {
         "utf8"
       );
       break;
+    case "CoffeeScript":
+      writeFile(
+        `${process.cwd()}/coffee/global.coffee`,
+        `console.log("global");`,
+        "utf8"
+      );
+      writeFile(
+        `${process.cwd()}/coffee/main.coffee`,
+        `/**
+        * название функции
+        *
+        * @param {number} first - первое число
+        * @returns {number}
+        */`,
+        "utf8"
+      );
+      break;
   }
 };
 export default createJS;
