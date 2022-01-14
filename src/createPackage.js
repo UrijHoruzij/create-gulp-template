@@ -5,6 +5,7 @@ const writeFile = promisify(fs.writeFile);
 const createPackage = (options) => {
   let devDependencies = [
     {
+      prettier: "^2.5.1",
       gulp: "^4.0.2",
       "browser-sync": "^2.27.5",
       del: "^6.0.0",
@@ -91,6 +92,7 @@ const createPackage = (options) => {
       dev: "gulp",
       build: "gulp build",
       cache: "gulp cache",
+      prettier: "prettier",
     },
     author: "Urij Horuzij",
     license: "MIT",

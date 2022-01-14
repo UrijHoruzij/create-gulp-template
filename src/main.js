@@ -12,6 +12,7 @@ import createFolders from "./createFolders";
 import createHTML from "./createHTML";
 import createJS from "./createJS";
 import createCSS from "./createCSS";
+import createFiles from "./createFiles";
 
 const writeFile = promisify(fs.writeFile);
 
@@ -55,6 +56,7 @@ export const createProject = async (options) => {
         title: "Create project files",
         task: () => {
           createPackage(options);
+          createFiles();
           createGitignore();
           createLicense(options);
           createFolders(options);
