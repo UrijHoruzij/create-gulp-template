@@ -60,16 +60,14 @@ const html = (options) => {
   }
 };
 const styles = (options) => {
+  const plugins = `const plugins = [autoprefixer({ browsers: ["last 1 version"] })]`;
   switch (options.css) {
     case "CSS3":
       return `const styles = () => {
+  ${plugins}
   return src("./css/**/*.css")
     .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
+    .pipe(postcss(plugins))
     .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
     .pipe(gulpif(!isProd, sourcemaps.write(".")))
     .pipe(dest("./public/css/"))
@@ -77,14 +75,11 @@ const styles = (options) => {
 };`;
     case "SASS":
       return `const styles = () => {
+  ${plugins}
   return src("./scss/**/*.scss")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(sass().on("error", notify.onError()))
-    .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
+    .pipe(postcss(plugins))
     .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
     .pipe(gulpif(!isProd, sourcemaps.write(".")))
     .pipe(dest("./public/css/"))
@@ -92,14 +87,11 @@ const styles = (options) => {
 };`;
     case "LESS":
       return `const styles = () => {
+  ${plugins}
   return src("./less/**/*.less")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(less().on("error", notify.onError()))
-    .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
+    .pipe(postcss(plugins))
     .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
     .pipe(gulpif(!isProd, sourcemaps.write(".")))
     .pipe(dest("./public/css/"))
@@ -107,14 +99,11 @@ const styles = (options) => {
 };`;
     case "Stylus":
       return `const styles = () => {
+  ${plugins}
   return src("./stylus/**/*.styl")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(stylus().on("error", notify.onError()))
-    .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
+    .pipe(postcss(plugins))
     .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
     .pipe(gulpif(!isProd, sourcemaps.write(".")))
     .pipe(dest("./public/css/"))
@@ -231,9 +220,10 @@ const watchHTML = (options) => {
 };
 const createGulpFile = async (options) => {
   let gulpfileTemplate = `import gulp from "gulp";
-import autoprefixer from "gulp-autoprefixer";
 import babel from "gulp-babel";
 import cleanCSS from "gulp-clean-css";
+import postcss from "gulp-postcss";
+import autoprefixer from "autoprefixer";
 import uglifyES from "gulp-uglify-es";
 import del from "del";
 import browserSync from "browser-sync";
@@ -248,6 +238,7 @@ import image from "gulp-imagemin";
 import { readFileSync } from "fs";
 import concat from "gulp-concat";
 import htmlmin from "gulp-htmlmin";
+
 ${htmlLibrary(options)}
 ${jsLibrary(options)}
 ${cssLibrary(options)}

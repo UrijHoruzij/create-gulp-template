@@ -6,6 +6,9 @@ const createPackage = (options) => {
   let devDependencies = [
     {
       prettier: "^2.5.1",
+      postcss: "^8.4.5",
+      "gulp-postcss": "^9.0.1",
+      autoprefixer: "^10.4.2",
       gulp: "^4.0.2",
       "browser-sync": "^2.27.5",
       del: "^6.0.0",
@@ -18,7 +21,6 @@ const createPackage = (options) => {
       "gulp-rev": "^9.0.0",
       "gulp-rev-rewrite": "^5.0.0",
       "gulp-rev-delete-original": "^0.2.3",
-      "gulp-autoprefixer": "^8.0.0",
       "gulp-babel": "^8.0.0",
       "gulp-svg-sprite": "^1.5.0",
       "gulp-clean-css": "^4.3.0",
