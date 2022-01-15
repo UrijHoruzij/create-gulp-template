@@ -10,6 +10,7 @@ const parseArgumentsIntoOptions = (rawArgs) => {
     {
       "--yes": Boolean,
       "-y": "--yes",
+      "--git": Boolean,
     },
     {
       argv: rawArgs.slice(2),
@@ -17,6 +18,7 @@ const parseArgumentsIntoOptions = (rawArgs) => {
   );
   return {
     skipPrompts: args["--yes"] || false,
+    git: args["--git"] || false,
     nameProject: args._[0],
   };
 };
@@ -35,7 +37,7 @@ const promptForMissingOptions = async (options) => {
       name: "html",
       type: "list",
       message: "Select the preprocessor",
-      choices: ["HTML5" /*"Pug"*/],
+      choices: ["HTML5", "Pug"],
     },
     {
       name: "css",
