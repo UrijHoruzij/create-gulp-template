@@ -61,17 +61,20 @@ const html = (options) => {
 };
 const styles = (options) => {
   const plugins = `const plugins = [autoprefixer({ browsers: ["last 1 version"] })]`;
+  const stylesTemplate = `
+  .pipe(postcss(plugins))
+  .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
+  .pipe(gulpif(!isProd, sourcemaps.write(".")))
+  .pipe(dest("./public/css/"))
+  .pipe(browserSync.stream());
+  `;
   switch (options.css) {
     case "CSS3":
       return `const styles = () => {
   ${plugins}
   return src("./css/**/*.css")
     .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(postcss(plugins))
-    .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
-    .pipe(gulpif(!isProd, sourcemaps.write(".")))
-    .pipe(dest("./public/css/"))
-    .pipe(browserSync.stream());
+    ${stylesTemplate}
 };`;
     case "SASS":
       return `const styles = () => {
@@ -79,11 +82,7 @@ const styles = (options) => {
   return src("./scss/**/*.scss")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(sass().on("error", notify.onError()))
-    .pipe(postcss(plugins))
-    .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
-    .pipe(gulpif(!isProd, sourcemaps.write(".")))
-    .pipe(dest("./public/css/"))
-    .pipe(browserSync.stream());
+   ${stylesTemplate}
 };`;
     case "LESS":
       return `const styles = () => {
@@ -91,11 +90,7 @@ const styles = (options) => {
   return src("./less/**/*.less")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(less().on("error", notify.onError()))
-    .pipe(postcss(plugins))
-    .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
-    .pipe(gulpif(!isProd, sourcemaps.write(".")))
-    .pipe(dest("./public/css/"))
-    .pipe(browserSync.stream());
+    ${stylesTemplate}
 };`;
     case "Stylus":
       return `const styles = () => {
@@ -103,15 +98,23 @@ const styles = (options) => {
   return src("./stylus/**/*.styl")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(stylus().on("error", notify.onError()))
-    .pipe(postcss(plugins))
-    .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
-    .pipe(gulpif(!isProd, sourcemaps.write(".")))
-    .pipe(dest("./public/css/"))
-    .pipe(browserSync.stream());
+    ${stylesTemplate}
 };`;
   }
 };
 const scripts = (options) => {
+  const scriptsTempalte = `
+  .pipe(
+      babel({
+        presets: ["@babel/env"],
+      })
+    )
+    .pipe(concat("main.js"))
+    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
+    .pipe(gulpif(!isProd, sourcemaps.write(".")))
+    .pipe(dest("./public/js"))
+    .pipe(browserSync.stream());
+  `;
   switch (options.js) {
     case "JavaScript":
       return `const scripts = () => {
@@ -125,16 +128,7 @@ const scripts = (options) => {
     "./js/main.js",
   ])
     .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(
-      babel({
-        presets: ["@babel/env"],
-      })
-    )
-    .pipe(concat("main.js"))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(gulpif(!isProd, sourcemaps.write(".")))
-    .pipe(dest("./public/js"))
-    .pipe(browserSync.stream());
+    ${scriptsTempalte}
 };`;
     case "TypeScript":
       return `const scripts = () => {
@@ -149,16 +143,7 @@ const scripts = (options) => {
   ])
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(ts())
-    .pipe(
-      babel({
-        presets: ["@babel/env"],
-      })
-    )
-    .pipe(concat("main.js"))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(gulpif(!isProd, sourcemaps.write(".")))
-    .pipe(dest("./public/js"))
-    .pipe(browserSync.stream());
+    ${scriptsTempalte}
 };`;
     case "CoffeeScript":
       return `const scripts = () => {
@@ -173,16 +158,7 @@ const scripts = (options) => {
   ])
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(coffee({bare: true})))
-    .pipe(
-      babel({
-        presets: ["@babel/env"],
-      })
-    )
-    .pipe(concat("main.js"))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(gulpif(!isProd, sourcemaps.write(".")))
-    .pipe(dest("./public/js"))
-    .pipe(browserSync.stream());
+    ${scriptsTempalte}
 };`;
   }
 };
