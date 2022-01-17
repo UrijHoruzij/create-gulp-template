@@ -37,7 +37,7 @@ const promptForMissingOptions = async (options) => {
       name: "html",
       type: "list",
       message: "Select the preprocessor",
-      choices: ["HTML5", "Pug"],
+      choices: ["HTML5", "Pug", "HAML" /* "Nunjucks", "Slim"*/],
     },
     {
       name: "css",

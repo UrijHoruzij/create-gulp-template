@@ -39,7 +39,11 @@ const createPackage = (options) => {
         pug: "^3.0.2",
         "gulp-pug": "^5.0.0",
       });
-
+      break;
+    case "HAML":
+      devDependencies.push({
+        "gulp-haml": "^1.0.1",
+      });
       break;
   }
   switch (options.css) {
