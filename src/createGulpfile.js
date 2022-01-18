@@ -10,6 +10,8 @@ const htmlLibrary = (options) => {
       return `import pug from 'gulp-pug';`;
     case "HAML":
       return `import haml from 'gulp-haml';`;
+    case "Nunjucks":
+      return `import nunjucks from 'gulp-nunjucks';`;
   }
 };
 const cssLibrary = (options) => {
@@ -53,20 +55,23 @@ const html = (options) => {
     case "Pug":
       return `const html = () => {
       return src(["./*.pug"])
-        .pipe(
-          pug()
-        )
+        .pipe(pug())
         .pipe(dest("./public"))
         .pipe(browserSync.stream());
     };`;
     case "HAML":
       return `const html = () => {
       return src(["./*.haml"])
-        .pipe(
-          haml({
+        .pipe(haml({
 				compiler: 'visionmedia',
-			})
-        )
+			}))
+        .pipe(dest("./public"))
+        .pipe(browserSync.stream());
+    };`;
+    case "Nunjucks":
+      return `const html = () => {
+      return src(["./*.html"])
+        .pipe(nunjucks.compile())
         .pipe(dest("./public"))
         .pipe(browserSync.stream());
     };`;
@@ -208,6 +213,9 @@ const watchHTML = (options) => {
     case "HAML":
       return `watch("./partials/*.haml", html);
   watch("./*.haml", html);`;
+    case "Nunjucks":
+      return `watch("./partials/*.html", html);
+  watch("./*.html", html);`;
   }
 };
 const createGulpFile = async (options) => {

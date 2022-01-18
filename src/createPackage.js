@@ -45,6 +45,11 @@ const createPackage = (options) => {
         "gulp-haml": "^1.0.1",
       });
       break;
+    case "Nunjucks":
+      devDependencies.push({
+        "gulp-nunjucks": "^5.1.0",
+      });
+      break;
   }
   switch (options.css) {
     case "SASS":
