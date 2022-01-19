@@ -29,7 +29,9 @@ indent_size = 4`;
     "bracketSameLine": true,
     "arrowParens": "always"
 }`;
+  const browserslistTemplate = `last 2 versions`;
   writeFile(`${process.cwd()}/.editorconfig`, editorTemplate, "utf8");
   writeFile(`${process.cwd()}/.prettierrc`, prettierTemplate, "utf8");
+  writeFile(`${process.cwd()}/.browserslistrc`, browserslistTemplate, "utf8");
 };
 export default createFiles;
