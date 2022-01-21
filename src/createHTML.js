@@ -17,11 +17,16 @@ const createHTML = async (options) => {
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <!-- @include('html/h1.html') пример инклуда -->
+    <!-- @include('partials/header.html') пример инклуда -->
     <script src="js/vendor.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>`;
+  const htmlHeaderTemplate = `<header>
+  </header>
+`;
+  const htmlFooterTemplate = `<footer>
+  </footer>`;
   const pugTemplate = `doctype html
 html(lang="ru")
   head
@@ -35,9 +40,11 @@ html(lang="ru")
     link(rel="stylesheet" href="css/vendor.css")
     link(rel="stylesheet" href="css/main.css")
   body
-      // include includes/head.pug
+      // include partials/header.pug
       script(src="js/vendor.js")
       script(src="js/main.js")`;
+  const pugHeaderTemplate = `header`;
+  const pugFooterTemplate = `footer`;
   const hamlTemplate = `!!! 5
 %html
   %head
@@ -74,9 +81,29 @@ html(lang="ru")
   `;
   switch (options.html) {
     case "HTML5":
-      return writeFile(`${process.cwd()}/index.html`, htmlTemplate, "utf8");
+      writeFile(`${process.cwd()}/index.html`, htmlTemplate, "utf8");
+      writeFile(
+        `${process.cwd()}/partials/header.html`,
+        htmlHeaderTemplate,
+        "utf8"
+      );
+      writeFile(
+        `${process.cwd()}/partials/footer.html`,
+        htmlFooterTemplate,
+        "utf8"
+      );
     case "Pug":
-      return writeFile(`${process.cwd()}/index.pug`, pugTemplate, "utf8");
+      writeFile(`${process.cwd()}/index.pug`, pugTemplate, "utf8");
+      writeFile(
+        `${process.cwd()}/partials/header.pug`,
+        pugHeaderTemplate,
+        "utf8"
+      );
+      writeFile(
+        `${process.cwd()}/partials/footer.pug`,
+        pugFooterTemplate,
+        "utf8"
+      );
     case "HAML":
       return writeFile(`${process.cwd()}/index.haml`, hamlTemplate, "utf8");
     case "Nunjucks":

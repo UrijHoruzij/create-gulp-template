@@ -1,6 +1,6 @@
 {
   "name": "create-gulp-template",
-  "version": "1.6.1",
+  "version": "2.0.0",
   "main": "src/index.js",
   "bin": {
     "@UrijHoruzij/create-gulp-template": "bin/create-gulp-template",
@@ -10,11 +10,18 @@
   "keywords": [
     "cli",
     "gulp",
+    "css",
     "sass",
     "scss",
     "less",
     "stylus",
-    "pug"
+    "html",
+    "pug",
+    "haml",
+    "nunjucks",
+    "javascript", 
+    "typescript", 
+    "coffeescript"
   ],
   "author": "Urij Horuzij",
   "license": "MIT",

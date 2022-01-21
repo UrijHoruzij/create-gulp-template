@@ -3,18 +3,30 @@ import { promisify } from "util";
 const writeFile = promisify(fs.writeFile);
 
 const createCSS = async (options) => {
+  const contentNormalize = fs.readFileSync(
+    __dirname + "/normalize.css",
+    (err, data) => {
+      if (err) console.log(err);
+      return data;
+    }
+  );
+  const contentMain = `@import 'vars';
+// @import "./components/header";`;
+  const contentVars = `:root {
+  --color-black: #000;
+  --color-white: #fff;
+}`;
+
   switch (options.css) {
     case "SASS":
+      const pathCSS = `scss`;
       writeFile(
-        `${process.cwd()}/scss/vendor/normalize.css`,
-        fs.readFileSync(__dirname + "/normalize.css", (err, data) => {
-          if (err) console.log(err);
-          return data;
-        }),
+        `${process.cwd()}/${pathCSS}/vendor/normalize.css`,
+        contentNormalize,
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/scss/mixins/_font-face.scss`,
+        `${process.cwd()}/${pathCSS}/mixins/_font-face.scss`,
         `@mixin font-face($font-family, $url, $weight, $style) {
   @font-face {
     font-family: "#{$font-family}";
@@ -27,53 +39,39 @@ const createCSS = async (options) => {
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/scss/_fonts.scss`,
+        `${process.cwd()}/${pathCSS}/_fonts.scss`,
         `// @include font-face("Muller", "../fonts/MullerRegular", 400, normal);`,
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/scss/_mixins.scss`,
+        `${process.cwd()}/${pathCSS}/_mixins.scss`,
         `@import "./mixins/font-face";`,
         "utf8"
       );
+      writeFile(`${process.cwd()}/${pathCSS}/_vars.scss`, contentVars, "utf8");
       writeFile(
-        `${process.cwd()}/scss/_vars.scss`,
-        `:root {
-  --color-black: #000;
-  --color-white: #fff;
-}`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/scss/global.scss`,
+        `${process.cwd()}/${pathCSS}/global.scss`,
         `@import "vars";
 @import "mixins";
 @import "fonts";`,
         "utf8"
       );
+      writeFile(`${process.cwd()}/${pathCSS}/main.scss`, contentMain, "utf8");
       writeFile(
-        `${process.cwd()}/scss/main.scss`,
-        ` @import 'vars';
-// @import "./components/header";`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/scss/vendors.scss`,
+        `${process.cwd()}/${pathCSS}/vendors.scss`,
         `@import "./vendor/normalize";`,
         "utf8"
       );
       break;
     case "LESS":
+      const pathCSS = `less`;
       writeFile(
-        `${process.cwd()}/less/vendor/normalize.less`,
-        fs.readFileSync(__dirname + "/normalize.css", (err, data) => {
-          if (err) console.log(err);
-          return data;
-        }),
+        `${process.cwd()}/${pathCSS}/vendor/normalize.less`,
+        contentNormalize,
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/less/mixins/font-face.less`,
+        `${process.cwd()}/${pathCSS}/mixins/font-face.less`,
         `.font-face(@font-family, @url, @weight, @style) {
   @font-face {
     font-family: @font-family;
@@ -86,53 +84,39 @@ const createCSS = async (options) => {
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/less/fonts.less`,
+        `${process.cwd()}/${pathCSS}/fonts.less`,
         `// @include font-face("Muller", "../fonts/MullerRegular", 400, normal);`,
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/less/mixins.less`,
+        `${process.cwd()}/${pathCSS}/mixins.less`,
         `@import "./mixins/font-face";`,
         "utf8"
       );
+      writeFile(`${process.cwd()}/${pathCSS}/vars.less`, contentVars, "utf8");
       writeFile(
-        `${process.cwd()}/less/vars.less`,
-        `:root {
-  --color-black: #000;
-  --color-white: #fff;
-}`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/less/global.less`,
+        `${process.cwd()}/${pathCSS}/global.less`,
         `@import "vars";
 @import "mixins";
 @import "fonts";`,
         "utf8"
       );
+      writeFile(`${process.cwd()}/${pathCSS}/main.less`, contentMain, "utf8");
       writeFile(
-        `${process.cwd()}/less/main.less`,
-        ` @import 'vars';
-// @import "./components/header";`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/less/vendors.less`,
+        `${process.cwd()}/${pathCSS}/vendors.less`,
         `@import "./vendor/normalize";`,
         "utf8"
       );
       break;
     case "Stylus":
+      const pathCSS = `stylus`;
       writeFile(
-        `${process.cwd()}/stylus/vendor/normalize.styl`,
-        fs.readFileSync(__dirname + "/normalize.css", (err, data) => {
-          if (err) console.log(err);
-          return data;
-        }),
+        `${process.cwd()}/${pathCSS}/vendor/normalize.styl`,
+        contentNormalize,
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/stylus/mixins/font-face.styl`,
+        `${process.cwd()}/${pathCSS}/mixins/font-face.styl`,
         `font-url(file)
   return '../fonts/' + file
 
@@ -148,53 +132,39 @@ webfont(family, file,weight, style)
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/stylus/fonts.styl`,
+        `${process.cwd()}/${pathCSS}/fonts.styl`,
         `// webfont("Muller", "../fonts/MullerRegular", 400, normal);`,
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/stylus/mixins.styl`,
+        `${process.cwd()}/${pathCSS}/mixins.styl`,
         `@import "./mixins/font-face";`,
         "utf8"
       );
+      writeFile(`${process.cwd()}/${pathCSS}/vars.styl`, contentVars, "utf8");
       writeFile(
-        `${process.cwd()}/stylus/vars.styl`,
-        `:root {
-  --color-black: #000;
-  --color-white: #fff;
-}`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/stylus/global.styl`,
+        `${process.cwd()}/${pathCSS}/global.styl`,
         `@import "vars";
 @import "mixins";
 @import "fonts";`,
         "utf8"
       );
+      writeFile(`${process.cwd()}/${pathCSS}/main.styl`, contentMain, "utf8");
       writeFile(
-        `${process.cwd()}/stylus/main.styl`,
-        ` @import 'vars';
-      // @import "./components/header";`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/stylus/vendors.styl`,
+        `${process.cwd()}/${pathCSS}/vendors.styl`,
         `@import "./vendor/normalize";`,
         "utf8"
       );
       break;
     case "CSS3":
+      const pathCSS = `css`;
       writeFile(
-        `${process.cwd()}/css/vendor/normalize.css`,
-        fs.readFileSync(__dirname + "/normalize.css", (err, data) => {
-          if (err) console.log(err);
-          return data;
-        }),
+        `${process.cwd()}/${pathCSS}/vendor/normalize.css`,
+        contentNormalize,
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/css/fonts.css`,
+        `${process.cwd()}/${pathCSS}/fonts.css`,
         `/* @font-face {
           font-family: "#{$font-family}";
           src: url("../fonts/#{$url}.woff2") format("woff2");
@@ -205,27 +175,15 @@ webfont(family, file,weight, style)
         "utf8"
       );
       writeFile(
-        `${process.cwd()}/css/global.css`,
+        `${process.cwd()}/${pathCSS}/global.css`,
         `/* @import "vars";
         @import "fonts"; */`,
         "utf8"
       );
+      writeFile(`${process.cwd()}/${pathCSS}/main.css`, contentMain, "utf8");
+      writeFile(`${process.cwd()}/${pathCSS}/vars.css`, contentVars, "utf8");
       writeFile(
-        `${process.cwd()}/css/main.css`,
-        `@import 'vars';
-        /* @import "./components/header"; */`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/css/vars.css`,
-        `:root {
-          --color-black: #000;
-          --color-white: #fff;
-        }`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/css/vendor.css`,
+        `${process.cwd()}/${pathCSS}/vendor.css`,
         `@import "./vendor/normalize.css";`,
         "utf8"
       );

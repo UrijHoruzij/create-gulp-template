@@ -1,5 +1,15 @@
 import fs from "fs";
 
+const createCssFolders = (prefix) => {
+  fs.mkdirSync(prefix);
+  fs.mkdirSync(`${prefix}/components`);
+  fs.mkdirSync(`${prefix}/vendor`);
+};
+const createJsFolders = (prefix) => {
+  fs.mkdirSync(prefix);
+  fs.mkdirSync(`${prefix}/components`);
+  fs.mkdirSync(`${prefix}/vendor`);
+};
 const createFolders = async (options) => {
   fs.mkdirSync("img");
   fs.mkdirSync("img/svg");
@@ -8,44 +18,30 @@ const createFolders = async (options) => {
   fs.mkdirSync("resources/fonts");
   switch (options.css) {
     case "SASS":
-      fs.mkdirSync("scss");
-      fs.mkdirSync("scss/components");
+      createCssFolders("scss");
       fs.mkdirSync("scss/mixins");
-      fs.mkdirSync("scss/vendor");
       break;
     case "LESS":
-      fs.mkdirSync("less");
-      fs.mkdirSync("less/components");
+      createCssFolders("less");
       fs.mkdirSync("less/mixins");
-      fs.mkdirSync("less/vendor");
       break;
     case "Stylus":
-      fs.mkdirSync("stylus");
-      fs.mkdirSync("stylus/components");
+      createCssFolders("stylus");
       fs.mkdirSync("stylus/mixins");
-      fs.mkdirSync("stylus/vendor");
       break;
     case "CSS3":
-      fs.mkdirSync("css");
-      fs.mkdirSync("css/components");
-      fs.mkdirSync("css/vendor");
+      createCssFolders("css");
       break;
   }
   switch (options.js) {
     case "JavaScript":
-      fs.mkdirSync("js");
-      fs.mkdirSync("js/components");
-      fs.mkdirSync("js/vendor");
+      createJsFolders("js");
       break;
     case "TypeScript":
-      fs.mkdirSync("ts");
-      fs.mkdirSync("ts/components");
-      fs.mkdirSync("ts/vendor");
+      createJsFolders("ts");
       break;
     case "CoffeeScript":
-      fs.mkdirSync("coffee");
-      fs.mkdirSync("coffee/components");
-      fs.mkdirSync("coffee/vendor");
+      createJsFolders("coffee");
       break;
   }
 };
