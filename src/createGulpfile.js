@@ -49,6 +49,9 @@ const html = (options) => {
             basepath: "@file",
           })
         )
+        .pipe(gulpif(isProd, htmlmin({
+        collapseWhitespace: true,
+      })))
         .pipe(dest("./public"))
         .pipe(browserSync.stream());
     };`;
@@ -56,6 +59,9 @@ const html = (options) => {
       return `const html = () => {
       return src(["./*.pug"])
         .pipe(pug())
+        .pipe(gulpif(isProd, htmlmin({
+        collapseWhitespace: true,
+      })))
         .pipe(dest("./public"))
         .pipe(browserSync.stream());
     };`;
@@ -65,6 +71,9 @@ const html = (options) => {
         .pipe(haml({
 				compiler: 'visionmedia',
 			}))
+      .pipe(gulpif(isProd, htmlmin({
+        collapseWhitespace: true,
+      })))
         .pipe(dest("./public"))
         .pipe(browserSync.stream());
     };`;
@@ -72,6 +81,9 @@ const html = (options) => {
       return `const html = () => {
       return src(["./*.html"])
         .pipe(nunjucks.compile())
+        .pipe(gulpif(isProd, htmlmin({
+        collapseWhitespace: true,
+      })))
         .pipe(dest("./public"))
         .pipe(browserSync.stream());
     };`;
@@ -244,7 +256,7 @@ ${jsLibrary(options)}
 ${cssLibrary(options)}
 
 browserSync.create();
-const { src, dest, series, watch } = gulp;
+const { src, dest, series, watch, parallel } = gulp;
 const uglify = uglifyES.default;
 
 let isProd = false;
@@ -279,15 +291,6 @@ const rewrite = () => {
     .pipe(
       revRewrite({
         manifest,
-      })
-    )
-    .pipe(dest("public"));
-};
-const htmlMinify = () => {
-  return src("public/**/*.html")
-    .pipe(
-      htmlmin({
-        collapseWhitespace: true,
       })
     )
     .pipe(dest("public"));
@@ -343,25 +346,13 @@ const watchFiles = () => {
 
 export default series(
   clean,
-  html,
-  scripts,
-  styles,
-  resources,
-  images,
-  svgSprites,
+  parallel(html, scripts, styles, resources, images, svgSprites),
   watchFiles
 );
 
 export const build = series(
-  toProd,
-  clean,
-  html,
-  scripts,
-  styles,
-  resources,
-  images,
-  svgSprites,
-  htmlMinify
+  parallel(toProd, clean),
+  parallel(html, scripts, styles, resources, images, svgSprites),
 );
 
 export const cache = series(cachePublic, rewrite);
