@@ -17,9 +17,10 @@ const createCSS = async (options) => {
   --color-white: #fff;
 }`;
 
+  let pathCSS;
   switch (options.css) {
     case "SASS":
-      const pathCSS = `scss`;
+      pathCSS = `scss`;
       writeFile(
         `${process.cwd()}/${pathCSS}/vendor/normalize.css`,
         contentNormalize,
@@ -64,7 +65,7 @@ const createCSS = async (options) => {
       );
       break;
     case "LESS":
-      const pathCSS = `less`;
+      pathCSS = `less`;
       writeFile(
         `${process.cwd()}/${pathCSS}/vendor/normalize.less`,
         contentNormalize,
@@ -109,7 +110,7 @@ const createCSS = async (options) => {
       );
       break;
     case "Stylus":
-      const pathCSS = `stylus`;
+      pathCSS = `stylus`;
       writeFile(
         `${process.cwd()}/${pathCSS}/vendor/normalize.styl`,
         contentNormalize,
@@ -157,7 +158,7 @@ webfont(family, file,weight, style)
       );
       break;
     case "CSS3":
-      const pathCSS = `css`;
+      pathCSS = `css`;
       writeFile(
         `${process.cwd()}/${pathCSS}/vendor/normalize.css`,
         contentNormalize,

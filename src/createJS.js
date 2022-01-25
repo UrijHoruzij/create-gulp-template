@@ -16,8 +16,8 @@ const createJS = async (options) => {
       writeFile(`${process.cwd()}/js/main.js`, contentMain, "utf8");
       break;
     case "TypeScript":
-      writeFile(`${process.cwd()}/js/global.ts`, contentGlobal, "utf8");
-      writeFile(`${process.cwd()}/js/main.ts`, contentMain, "utf8");
+      writeFile(`${process.cwd()}/ts/global.ts`, contentGlobal, "utf8");
+      writeFile(`${process.cwd()}/ts/main.ts`, contentMain, "utf8");
       break;
     case "CoffeeScript":
       writeFile(`${process.cwd()}/coffee/global.coffee`, contentGlobal, "utf8");
