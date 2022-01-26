@@ -1,6 +1,6 @@
 {
   "name": "create-gulp-template",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "main": "src/index.js",
   "bin": {
     "@UrijHoruzij/create-gulp-template": "bin/create-gulp-template",

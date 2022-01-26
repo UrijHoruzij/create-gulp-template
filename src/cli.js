@@ -51,6 +51,12 @@ const promptForMissingOptions = async (options) => {
       message: "Select the preprocessor",
       choices: ["JavaScript", "TypeScript", "CoffeeScript"],
     },
+    {
+      name: "gitInit",
+      type: "confirm",
+      message: "Initilization git?",
+      default: false,
+    },
   ];
   const answers = await inquirer.prompt(questions);
   return {
@@ -58,6 +64,7 @@ const promptForMissingOptions = async (options) => {
     html: answers.html,
     css: answers.css,
     js: answers.js,
+    git: answers.gitInit,
   };
 };
 
@@ -70,5 +77,5 @@ export const cli = async (args) => {
   );
   let options = parseArgumentsIntoOptions(args);
   options = await promptForMissingOptions(options);
-  await createProject(options);
+  // await createProject(options);
 };
