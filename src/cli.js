@@ -51,6 +51,7 @@ const promptForMissingOptions = async (options) => {
       message: "Select the preprocessor",
       choices: ["JavaScript", "TypeScript", "CoffeeScript"],
     },
+    
     {
       name: "gitInit",
       type: "confirm",
@@ -77,5 +78,5 @@ export const cli = async (args) => {
   );
   let options = parseArgumentsIntoOptions(args);
   options = await promptForMissingOptions(options);
-  // await createProject(options);
+  await createProject(options);
 };

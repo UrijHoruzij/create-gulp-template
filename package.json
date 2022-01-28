@@ -1,6 +1,6 @@
 {
   "name": "create-gulp-template",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "main": "src/index.js",
   "bin": {
     "@UrijHoruzij/create-gulp-template": "bin/create-gulp-template",
@@ -19,8 +19,8 @@
     "pug",
     "haml",
     "nunjucks",
-    "javascript", 
-    "typescript", 
+    "javascript",
+    "typescript",
     "coffeescript"
   ],
   "author": "Urij Horuzij",
@@ -38,6 +38,6 @@
     "spdx-license-list": "^6.4.0",
     "util": "^0.12.4"
   },
-  "preferGlobal":true,
+  "preferGlobal": true,
   "description": ""
 }
