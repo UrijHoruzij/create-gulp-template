@@ -51,7 +51,18 @@ const promptForMissingOptions = async (options) => {
       message: "Select the preprocessor",
       choices: ["JavaScript", "TypeScript", "CoffeeScript"],
     },
-    
+    // {
+    //   name: "framework",
+    //   type: "list",
+    //   message: "Select the framework",
+    //   choices: ["Tailwind CSS", "Bootstrap"],
+    // },
+    // {
+    //   name: "lib",
+    //   type: "checkbox",
+    //   message: "Select the library",
+    //   choices: ["locomotive scroll","Jquery","GSAP", "Slick.js","Fotorama.js","fullPage.js","Highlight.js"],
+    // },
     {
       name: "gitInit",
       type: "confirm",
