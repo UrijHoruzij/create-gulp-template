@@ -153,7 +153,6 @@ const scripts = (options) => {
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
     .pipe(dest("./public/js/"));
   return src([
-    "./js/global.js",
     "./js/components/**.js",
     "./js/main.js",
   ])
@@ -167,7 +166,6 @@ const scripts = (options) => {
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
     .pipe(dest("./public/js/"));
   return src([
-    "./ts/global.ts",
     "./ts/components/**.ts",
     "./ts/main.ts",
   ])
@@ -182,7 +180,6 @@ const scripts = (options) => {
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
     .pipe(dest("./public/js/"));
   return src([
-    "./coffee/global.coffee",
     "./coffee/components/**.coffee",
     "./coffee/main.coffee",
   ])
