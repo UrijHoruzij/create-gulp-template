@@ -15,8 +15,7 @@
 ```
 ├── src/                          # Sources
 │   ├── js                        # Scripts
-│   │   └── main.js               # Main script
-│   │   ├── global.js             # The file with the basic project data-variables, auxiliary functions, etc.
+│   │   ├── main.js               # Main script
 │   │   ├── components            # Js-components
 │   │   ├── vendor                # The folder for downloading local versions of libraries
 │   ├── stylus                    # Site styles (stylus preprocessor)
@@ -91,8 +90,6 @@ When using the `gulp build` command, you will get a minified css code in one lin
 Support for `import` and `require` is not implemented! Files are collected automatically from various folders.
 
 It is better to divide the JS code into components - small js files that contain their own implementation isolated from each other. Place such files in the **components** folder.
-
-In the file **global.js** should store the basic data of the project-variables, some auxiliary functions (such as stopping the scroll, etc.).
 
 In the file **main.js** does not connect anything, it is recommended for implementing the general logic of the site.
 
