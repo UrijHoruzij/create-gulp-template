@@ -243,10 +243,11 @@ import revRewrite from "gulp-rev-rewrite";
 import revDel from "gulp-rev-delete-original";
 import gulpif from "gulp-if";
 import notify from "gulp-notify";
-import image from "gulp-imagemin";
+import imagemin from "gulp-imagemin";
 import { readFileSync } from "fs";
 import concat from "gulp-concat";
 import htmlmin from "gulp-htmlmin";
+import rsync from "gulp-rsync"
 
 ${htmlLibrary(options)}
 ${jsLibrary(options)}
@@ -297,17 +298,26 @@ const resources = () => {
 };
 const images = () => {
   return src([
-    "./img/**.jpg",
-    "./img/**.png",
-    "./img/**.jpeg",
-    "./img/*.svg",
-    "./img/**/*.jpg",
-    "./img/**/*.png",
-    "./img/**/*.jpeg",
+    "./img/**/*"
   ])
-    .pipe(gulpif(isProd, image()))
+    .pipe(gulpif(isProd, imagemin()))
     .pipe(dest("./public/img"));
 };
+
+const deployBuild = () => {
+	return src('public/')
+		.pipe(rsync({
+			root: 'public/',
+			hostname: 'username@yousite.com',
+			destination: 'yousite/public_html/',
+			clean: true,
+			recursive: true,
+			archive: true,
+			silent: false,
+			compress: true
+		}))
+}
+
 const svgSprites = () => {
   return src("./img/svg/**.svg")
     .pipe(
@@ -352,6 +362,7 @@ export const build = series(
   parallel(html, scripts, styles, resources, images, svgSprites),
 );
 
+export const deploy = series(deployBuild);
 export const cache = series(cachePublic, rewrite);
   `;
   writeFile(`${process.cwd()}/gulpfile.js`, gulpfileTemplate, "utf8");

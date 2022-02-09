@@ -26,6 +26,7 @@ const createPackage = (options) => {
       "gulp-clean-css": "^4.3.0",
       "gulp-uglify-es": "^3.0.0",
       "gulp-htmlmin": "^5.0.1",
+      "gulp-rsync": "^0.0.9",
     },
   ];
   switch (options.html) {
