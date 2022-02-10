@@ -104,6 +104,7 @@ const createPackage = (options) => {
       dev: "gulp",
       build: "gulp build",
       cache: "gulp cache",
+      deploy: "gulp deploy",
       prettier: "prettier",
     },
     author: "Urij Horuzij",
