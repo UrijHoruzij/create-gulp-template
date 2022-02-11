@@ -39,6 +39,13 @@ const jsLibrary = (options) => {
   }
 };
 const html = (options) => {
+  const partTemplate = `
+    .pipe(gulpif(isProd, htmlmin({
+      collapseWhitespace: true,
+    })))
+    .pipe(dest("./public"))
+    .pipe(browserSync.stream());
+  `;
   switch (options.html) {
     case "HTML5":
       return `const html = () => {
@@ -49,21 +56,13 @@ const html = (options) => {
             basepath: "@file",
           })
         )
-        .pipe(gulpif(isProd, htmlmin({
-        collapseWhitespace: true,
-      })))
-        .pipe(dest("./public"))
-        .pipe(browserSync.stream());
+        ${partTemplate}
     };`;
     case "Pug":
       return `const html = () => {
       return src(["./*.pug"])
         .pipe(pug())
-        .pipe(gulpif(isProd, htmlmin({
-        collapseWhitespace: true,
-      })))
-        .pipe(dest("./public"))
-        .pipe(browserSync.stream());
+        ${partTemplate}
     };`;
     case "HAML":
       return `const html = () => {
@@ -71,26 +70,18 @@ const html = (options) => {
         .pipe(haml({
 				compiler: 'visionmedia',
 			}))
-      .pipe(gulpif(isProd, htmlmin({
-        collapseWhitespace: true,
-      })))
-        .pipe(dest("./public"))
-        .pipe(browserSync.stream());
+      ${partTemplate}
     };`;
     case "Nunjucks":
       return `const html = () => {
       return src(["./*.html"])
         .pipe(nunjucks.compile())
-        .pipe(gulpif(isProd, htmlmin({
-        collapseWhitespace: true,
-      })))
-        .pipe(dest("./public"))
-        .pipe(browserSync.stream());
+        ${partTemplate}
     };`;
   }
 };
 const styles = (options) => {
-  const plugins = `const plugins = [autoprefixer({ browsers: ["last 1 version"] })]`;
+  const plugins = `const plugins = [autoprefixer()]`;
   const stylesTemplate = `
   .pipe(postcss(plugins))
   .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
@@ -152,10 +143,7 @@ const scripts = (options) => {
     .pipe(concat("vendor.js"))
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
     .pipe(dest("./public/js/"));
-  return src([
-    "./js/components/**.js",
-    "./js/main.js",
-  ])
+  return src("./js/main.js")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     ${scriptsTempalte}
 };`;
@@ -165,10 +153,7 @@ const scripts = (options) => {
     .pipe(concat("vendor.js"))
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
     .pipe(dest("./public/js/"));
-  return src([
-    "./ts/components/**.ts",
-    "./ts/main.ts",
-  ])
+  return src("./ts/main.ts")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(ts())
     ${scriptsTempalte}
@@ -179,10 +164,7 @@ const scripts = (options) => {
     .pipe(concat("vendor.js"))
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
     .pipe(dest("./public/js/"));
-  return src([
-    "./coffee/components/**.coffee",
-    "./coffee/main.coffee",
-  ])
+  return src("./coffee/main.coffee")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(coffee({bare: true})))
     ${scriptsTempalte}
