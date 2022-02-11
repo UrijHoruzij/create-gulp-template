@@ -2,12 +2,10 @@ import fs from "fs";
 
 const createCssFolders = (prefix) => {
   fs.mkdirSync(prefix);
-  fs.mkdirSync(`${prefix}/components`);
   fs.mkdirSync(`${prefix}/vendor`);
 };
 const createJsFolders = (prefix) => {
   fs.mkdirSync(prefix);
-  fs.mkdirSync(`${prefix}/components`);
   fs.mkdirSync(`${prefix}/vendor`);
 };
 const createFolders = async (options) => {
