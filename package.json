@@ -1,6 +1,6 @@
 {
   "name": "create-gulp-template",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "main": "src/index.js",
   "bin": {
     "@UrijHoruzij/create-gulp-template": "bin/create-gulp-template",
@@ -33,6 +33,7 @@
     "execa": "^5.0.0",
     "figlet": "^1.5.0",
     "inquirer": "^8.1.2",
+    "normalize.css": "^8.0.1",
     "listr": "^0.14.3",
     "pkg-install": "^1.0.0",
     "spdx-license-list": "^6.4.0",

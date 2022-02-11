@@ -4,14 +4,15 @@ const writeFile = promisify(fs.writeFile);
 
 const createCSS = async (options) => {
   const contentNormalize = fs.readFileSync(
-    __dirname + "/normalize.css",
+    "../node_modules/normalize.css/normalize.css",
     (err, data) => {
       if (err) console.log(err);
       return data;
     }
   );
-  const contentMain = `@import 'vars';
-// @import "./components/header";`;
+  const contentMain = `@import "vars";
+@import "mixins";
+@import "fonts";`;
   const contentVars = `:root {
   --color-black: #000;
   --color-white: #fff;
