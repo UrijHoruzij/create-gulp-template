@@ -50,13 +50,6 @@ const createCSS = async (options) => {
         "utf8"
       );
       writeFile(`${process.cwd()}/${pathCSS}/_vars.scss`, contentVars, "utf8");
-      writeFile(
-        `${process.cwd()}/${pathCSS}/global.scss`,
-        `@import "vars";
-@import "mixins";
-@import "fonts";`,
-        "utf8"
-      );
       writeFile(`${process.cwd()}/${pathCSS}/main.scss`, contentMain, "utf8");
       writeFile(
         `${process.cwd()}/${pathCSS}/vendors.scss`,
@@ -95,13 +88,6 @@ const createCSS = async (options) => {
         "utf8"
       );
       writeFile(`${process.cwd()}/${pathCSS}/vars.less`, contentVars, "utf8");
-      writeFile(
-        `${process.cwd()}/${pathCSS}/global.less`,
-        `@import "vars";
-@import "mixins";
-@import "fonts";`,
-        "utf8"
-      );
       writeFile(`${process.cwd()}/${pathCSS}/main.less`, contentMain, "utf8");
       writeFile(
         `${process.cwd()}/${pathCSS}/vendors.less`,
@@ -143,13 +129,6 @@ webfont(family, file,weight, style)
         "utf8"
       );
       writeFile(`${process.cwd()}/${pathCSS}/vars.styl`, contentVars, "utf8");
-      writeFile(
-        `${process.cwd()}/${pathCSS}/global.styl`,
-        `@import "vars";
-@import "mixins";
-@import "fonts";`,
-        "utf8"
-      );
       writeFile(`${process.cwd()}/${pathCSS}/main.styl`, contentMain, "utf8");
       writeFile(
         `${process.cwd()}/${pathCSS}/vendors.styl`,
@@ -173,12 +152,6 @@ webfont(family, file,weight, style)
           font-display: swap;
           font-style: $style;
         } */`,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/${pathCSS}/global.css`,
-        `/* @import "vars";
-        @import "fonts"; */`,
         "utf8"
       );
       writeFile(`${process.cwd()}/${pathCSS}/main.css`, contentMain, "utf8");

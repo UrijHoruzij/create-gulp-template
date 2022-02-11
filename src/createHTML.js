@@ -12,12 +12,11 @@ const createHTML = async (options) => {
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <meta name="theme-color" content="#111111">
     <title>Document</title>
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <!-- @include('partials/header.html') пример инклуда -->
+    <!-- @include('partials/header.html') example include -->
     <script src="js/vendor.js"></script>
     <script src="js/main.js"></script>
 </body>
@@ -36,7 +35,6 @@ html(lang="ru")
     link(rel="shortcut icon" href="img/favicon.ico" type="image/x-icon")
     meta(name="theme-color" content="#111111")
     title= "Document"
-    link(rel="stylesheet" href="css/global.css)
     link(rel="stylesheet" href="css/vendor.css")
     link(rel="stylesheet" href="css/main.css")
   body
@@ -53,7 +51,6 @@ html(lang="ru")
     %link{href:"img/favicon.ico", type:"image/x-icon", rel:"shortcut icon"}
     %meta{name:"theme-color", content:"#111111"}
     %title Document
-    %link{href:"css/global.css", type:"text/css", rel:"stylesheet"}
     %link{href:"css/vendor.css", type: "text/css", rel:"stylesheet"}
     %link{href:"css/main.css", type:"text/css", rel:"stylesheet"}
   %body 
@@ -69,7 +66,6 @@ html(lang="ru")
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <meta name="theme-color" content="#111111">
     <title>Document</title>
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -92,6 +88,7 @@ html(lang="ru")
         htmlFooterTemplate,
         "utf8"
       );
+      break;
     case "Pug":
       writeFile(`${process.cwd()}/index.pug`, pugTemplate, "utf8");
       writeFile(
@@ -104,6 +101,7 @@ html(lang="ru")
         pugFooterTemplate,
         "utf8"
       );
+      break;
     case "HAML":
       return writeFile(`${process.cwd()}/index.haml`, hamlTemplate, "utf8");
     case "Nunjucks":
