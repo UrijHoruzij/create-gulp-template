@@ -11,6 +11,6 @@ module.exports = function (eleventyConfig) {
 		return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('dd LLL yyyy');
 	});
 	return {
-		pathPrefix: '/eleventy-blog-template/',
+		pathPrefix: '/create-gulp-template/',
 	};
 };
