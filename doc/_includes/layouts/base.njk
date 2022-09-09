@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ '/css/normalize.css' | url }}" />
+  <link rel="stylesheet" href="{{ '/css/style.css' | url }}" />
+  <link rel="stylesheet" href="{{ '/css/atom-one-dark.min.css' | url }}" />
+  <script src="{{ '/js/highlight.min.js' | url }}"></script>
+  <script src="{{ '/js/typescript.min.js' | url }}"></script>
+  <script src="{{ '/js/javascript.min.js' | url }}"></script>
+  <script src="{{ '/js/coffeescript.min.js' | url }}"></script>
+  <script src="{{ '/js/css.min.js' | url }}"></script>
+  <script src="{{ '/js/scss.min.js' | url }}"></script>
+  <script src="{{ '/js/less.min.js' | url }}"></script>
+  <script src="{{ '/js/stylus.min.js' | url }}"></script>
+  <script src="{{ '/js/xml.min.js' | url }}"></script>
+  <script src="{{ '/js/haml.min.js' | url }}"></script>
+  <script>hljs.highlightAll();</script>
+  <title>{{ title }}</title>
+</head>
+<body>
+  {% include "sidebar.njk" %}
+  <main class="content">
+    {{ content | safe }}
+  </main>
+  <script src="{{ '/js/main.js' | url }}"></script>
+</body>
+</html>

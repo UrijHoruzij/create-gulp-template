@@ -1,3 +1,10 @@
+---
+title: HTML5 SASS JavaScript
+description: This is the first post on my blog
+tags: post
+layout: layouts/post.njk
+---
+
 # HTML5-SASS-JavaScript — Gulp build
 
 > Gulp 4 is used
@@ -18,15 +25,15 @@
 │   │   ├── main.js               # Main script
 │   │   ├── components            # Js-components
 │   │   ├── vendor                # The folder for downloading local versions of libraries
-│   ├── less                      # Site styles (less preprocessor)
-│   │   └── main.less             # Main Style file
-│   │   └── global.less           # The file with global settings - resets, fonts, etc.
-│   │   └── vendor.less           # The file for connecting library styles from the vendor folder
-│   │   └── fonts.less            # The file for connecting fonts (you can use a mixin)
-│   │   └── mixins.less           # The file for connecting mixins from the mixins folder
-│   │   └── vars.less             # The file for writing css - or less-variables
-│   │   ├── components            # Less-components
-│   │   ├── mixins                # The folder for saving ready-made less components
+│   ├── scss                      # Site styles (sass preprocessor in scss syntax)
+│   │   └── main.scss             # Main Style file
+│   │   └── global.scss           # The file with global settings - resets, fonts, etc.
+│   │   └── vendor.scss           # The file for connecting library styles from the vendor folder
+│   │   └── _fonts.scss           # The file for connecting fonts (you can use a mixin)
+│   │   └── _mixins.scss          # The file for connecting mixins from the mixins folder
+│   │   └── _vars.scss            # The file for writing css - or scss-variables
+│   │   ├── components            # Scss-components
+│   │   ├── mixins                # The folder for saving ready-made scss components
 │   │   ├── vendor                # The folder for storing local css styles of libraries
 │   ├── partials                  # The folder for storing html parts of the page
 │   ├── img                       # The folder for storing images
@@ -68,18 +75,18 @@ When using the `gulp build` command, you will get a minified html code in one li
 
 ## Working with CSS
 
-The assembly uses the **less** preprocessor.
+The assembly uses the **sass** preprocessor in the **scss** syntax.
 
-Styles written in **components** should be included in **main.less**.
-Styles from **\fonts**, **\vars** and **\mixins** are connected in **global.less**.
+Styles written in **components** should be included in **main.scss**.
+Styles from **\_fonts**, **\_vars** and **\_mixins** are connected in **global.scss**.
 
-To connect third-party css files (libraries) - put them in the **vendor** folder and connect them in the file **vendor.less**.
+To connect third-party css files (libraries) - put them in the **vendor** folder and connect them in the file **vendor.scss**.
 
-If you want to create your own mixin, do it in the **mixins** folder, and then connect it to the **\mixins.less** file.
+If you want to create your own mixin, do it in the **mixins** folder, and then connect it to the **\_mixins.scss** file.
 
-If you want to use scss variables, connect **\vars.less** also to main.less or to any other place where it is needed, but be sure to remove **:root**.
+If you want to use scss variables, connect **\_vars.scss** also to main.scss or to any other place where it is needed, but be sure to remove **:root**.
 
-> To connect css files, use the `@import`directive
+> To connect css files, use the `@import` directive
 
 Three files are created in the resulting folder **public/css**: <br> **main.css** - for page styles, <br> **global.css** - for global styles, <br> **vendor.css** - for styles of all libraries used in the project.
 

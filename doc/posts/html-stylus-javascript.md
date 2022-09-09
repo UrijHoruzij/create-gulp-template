@@ -1,4 +1,11 @@
-# HTML5-SASS-JavaScript — Gulp build
+---
+title: HTML5 Stylus JavaScript
+description: This is the first post on my blog
+tags: post
+layout: layouts/post.njk
+---
+
+# HTML5-Stylus-JavaScript — Gulp build
 
 > Gulp 4 is used
 
@@ -18,15 +25,15 @@
 │   │   ├── main.js               # Main script
 │   │   ├── components            # Js-components
 │   │   ├── vendor                # The folder for downloading local versions of libraries
-│   ├── scss                      # Site styles (sass preprocessor in scss syntax)
-│   │   └── main.scss             # Main Style file
-│   │   └── global.scss           # The file with global settings - resets, fonts, etc.
-│   │   └── vendor.scss           # The file for connecting library styles from the vendor folder
-│   │   └── _fonts.scss           # The file for connecting fonts (you can use a mixin)
-│   │   └── _mixins.scss          # The file for connecting mixins from the mixins folder
-│   │   └── _vars.scss            # The file for writing css - or scss-variables
-│   │   ├── components            # Scss-components
-│   │   ├── mixins                # The folder for saving ready-made scss components
+│   ├── stylus                    # Site styles (stylus preprocessor)
+│   │   └── main.styl             # Main Style file
+│   │   └── global.styl           # The file with global settings - resets, fonts, etc.
+│   │   └── vendor.styl           # The file for connecting library styles from the vendor folder
+│   │   └── fonts.styl            # The file for connecting fonts (you can use a mixin)
+│   │   └── mixins.styl           # The file for connecting mixins from the mixins folder
+│   │   └── vars.styl             # The file for writing css - or styl-variables
+│   │   ├── components            # Stylus-components
+│   │   ├── mixins                # The folder for saving ready-made stylus components
 │   │   ├── vendor                # The folder for storing local css styles of libraries
 │   ├── partials                  # The folder for storing html parts of the page
 │   ├── img                       # The folder for storing images
@@ -68,24 +75,24 @@ When using the `gulp build` command, you will get a minified html code in one li
 
 ## Working with CSS
 
-The assembly uses the **sass** preprocessor in the **scss** syntax.
+The assembly uses the **stylus** preprocessor.
 
-Styles written in **components** should be included in **main.scss**.
-Styles from **\_fonts**, **\_vars** and **\_mixins** are connected in **global.scss**.
+Styles written in **components** should be included in **main.styl**.
+Styles from **\fonts**, **\vars** and **\mixins** are connected in **global.styl**.
 
-To connect third-party css files (libraries) - put them in the **vendor** folder and connect them in the file **vendor.scss**.
+To connect third-party css files (libraries) - put them in the **vendor** folder and connect them in the file **vendor.styl**.
 
-If you want to create your own mixin, do it in the **mixins** folder, and then connect it to the **\_mixins.scss** file.
+If you want to create your own mixin, do it in the **mixins** folder, and then connect it to the **\mixins.styl** file.
 
-If you want to use scss variables, connect **\_vars.scss** also to main.scss or to any other place where it is needed, but be sure to remove **:root**.
+If you want to use scss variables, connect **\vars.styl** also to main.styl or to any other place where it is needed, but be sure to remove **:root**.
 
-> To connect css files, use the `@import` directive
+> To connect css files, use the `@import`directive
 
 Three files are created in the resulting folder **public/css**: <br> **main.css** - for page styles, <br> **global.css** - for global styles, <br> **vendor.css** - for styles of all libraries used in the project.
 
 When using the `gulp build` command, you will get a minified css code in one line for all css files.
 
-## Working with JavaScript
+## Работа с JavaScript
 
 Support for `import` and `require` is not implemented! Files are collected automatically from various folders.
 

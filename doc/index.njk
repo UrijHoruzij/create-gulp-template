@@ -1,0 +1,10 @@
+---
+title: Homepage
+layout: layouts/base.njk
+---
+
+<section class="welcome">
+  <h1 class="title">{{ site.title }}</h1>
+  <h2 class="subtitle">{{ site.description }}</h2>
+  {{ content | safe }}
+</section>

@@ -1,4 +1,11 @@
-# HTML5-SASS-JavaScript — Gulp build
+---
+title: HTML5 LESS JavaScript
+description: This is the first post on my blog
+tags: post
+layout: layouts/post.njk
+---
+
+# HTML5-LESS-JavaScript — Gulp build
 
 > Gulp 4 is used
 
@@ -18,13 +25,15 @@
 │   │   ├── main.js               # Main script
 │   │   ├── components            # Js-components
 │   │   ├── vendor                # The folder for downloading local versions of libraries
-│   ├── css                       # Site styles (sass preprocessor in scss syntax)
-│   │   └── main.css              # Main Style file
-│   │   └── global.css            # The file with global settings - resets, fonts, etc.
-│   │   └── vendor.css            # The file for connecting library styles from the vendor folder
-│   │   └── fonts.css             # The file for connecting fonts
-│   │   └── vars.css              # The file for writing css - or scss-variables
-│   │   ├── components            # Css-components
+│   ├── less                      # Site styles (less preprocessor)
+│   │   └── main.less             # Main Style file
+│   │   └── global.less           # The file with global settings - resets, fonts, etc.
+│   │   └── vendor.less           # The file for connecting library styles from the vendor folder
+│   │   └── fonts.less            # The file for connecting fonts (you can use a mixin)
+│   │   └── mixins.less           # The file for connecting mixins from the mixins folder
+│   │   └── vars.less             # The file for writing css - or less-variables
+│   │   ├── components            # Less-components
+│   │   ├── mixins                # The folder for saving ready-made less components
 │   │   ├── vendor                # The folder for storing local css styles of libraries
 │   ├── partials                  # The folder for storing html parts of the page
 │   ├── img                       # The folder for storing images
@@ -66,14 +75,18 @@ When using the `gulp build` command, you will get a minified html code in one li
 
 ## Working with CSS
 
-Styles written in **components** should be included in **main.css**.
-Styles from **\fonts**, **\vars** are connected in **global.css**.
+The assembly uses the **less** preprocessor.
 
-To connect third-party css files (libraries) - put them in the **vendor** folder and connect them in the file **vendor.css**.
+Styles written in **components** should be included in **main.less**.
+Styles from **\fonts**, **\vars** and **\mixins** are connected in **global.less**.
 
-If you want to use css variables, connect **\vars.css** also to main.css or to any other place where it is needed.
+To connect third-party css files (libraries) - put them in the **vendor** folder and connect them in the file **vendor.less**.
 
-> To connect css files, use the `@import` directive
+If you want to create your own mixin, do it in the **mixins** folder, and then connect it to the **\mixins.less** file.
+
+If you want to use scss variables, connect **\vars.less** also to main.less or to any other place where it is needed, but be sure to remove **:root**.
+
+> To connect css files, use the `@import`directive
 
 Three files are created in the resulting folder **public/css**: <br> **main.css** - for page styles, <br> **global.css** - for global styles, <br> **vendor.css** - for styles of all libraries used in the project.
 
