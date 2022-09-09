@@ -4,6 +4,8 @@
 	"version": "2.3.0",
 	"main": "src/index.js",
 	"scripts": {
+		"build": "cd doc && npm run build",
+		"start": "cd doc && npm run start",
 		"prepare": "husky install"
 	},
 	"bin": {

@@ -36,12 +36,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - name: Go to folder doc
-        run: cd doc
       - name: Install dependencies
-        run: yarn install
+        run: cd doc && yarn install
       - name: Build Eleventy
-        run: npm run build
+        run: cd doc && yarn run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
