@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/create-gulp-template/css/normalize.css" />
+  <link rel="stylesheet" href="/create-gulp-template/css/style.css" />
+  <link rel="stylesheet" href="/create-gulp-template/css/atom-one-dark.min.css" />
+  <script src="/create-gulp-template/js/highlight.min.js"></script>
+  <script src="/create-gulp-template/js/typescript.min.js"></script>
+  <script src="/create-gulp-template/js/javascript.min.js"></script>
+  <script src="/create-gulp-template/js/coffeescript.min.js"></script>
+  <script src="/create-gulp-template/js/css.min.js"></script>
+  <script src="/create-gulp-template/js/scss.min.js"></script>
+  <script src="/create-gulp-template/js/less.min.js"></script>
+  <script src="/create-gulp-template/js/stylus.min.js"></script>
+  <script src="/create-gulp-template/js/xml.min.js"></script>
+  <script src="/create-gulp-template/js/haml.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>HTML5 CSS3 JavaScript</title>
+</head>
+<body>
+  <aside class="sidebar">
+    <header class="sidebar__header">
+        <div class="sidebar__logo"><a href="/create-gulp-template/">Create gulp template</a></div>
+        <div class="sidebar__hamburger"></div>
+    </header>
+    <nav class="sidebar__navigation">
+  <ul class="navigation">
+    
+      <li class="navigation__item">
+        <a href="/create-gulp-template/posts/html-css3-javascript/" class="navigation__link 
+  navigation__link--activ
+">
+        HTML5 CSS3 JavaScript
+        </a>
+      </li>
+    
+      <li class="navigation__item">
+        <a href="/create-gulp-template/posts/html-less-javascript/" class="navigation__link ">
+        HTML5 LESS JavaScript
+        </a>
+      </li>
+    
+      <li class="navigation__item">
+        <a href="/create-gulp-template/posts/html-sass-javascript/" class="navigation__link ">
+        HTML5 SASS JavaScript
+        </a>
+      </li>
+    
+      <li class="navigation__item">
+        <a href="/create-gulp-template/posts/html-stylus-javascript/" class="navigation__link ">
+        HTML5 Stylus JavaScript
+        </a>
+      </li>
+    
+  </ul>
+  <a href="https://github.com/UrijHoruzij/create-gulp-template" class="github">
+        <svg viewBox="0 0 30 30" width="30px"
+            height="30px">
+            <g>
+                <path style="stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;"
+                    d="M 15 3 C 8.371094 3 3 8.371094 3 15 C 3 20.621094 6.871094 25.328125 12.09375 26.628906 C 12.035156 26.46875 12 26.28125 12 26.046875 L 12 23.996094 C 11.511719 23.996094 10.695312 23.996094 10.492188 23.996094 C 9.671875 23.996094 8.941406 23.644531 8.585938 22.988281 C 8.195312 22.257812 8.125 21.144531 7.152344 20.460938 C 6.863281 20.234375 7.082031 19.976562 7.414062 20.011719 C 8.03125 20.183594 8.539062 20.605469 9.019531 21.230469 C 9.5 21.859375 9.722656 22 10.617188 22 C 11.050781 22 11.699219 21.976562 12.308594 21.878906 C 12.636719 21.046875 13.203125 20.28125 13.894531 19.917969 C 9.898438 19.507812 7.992188 17.519531 7.992188 14.820312 C 7.992188 13.65625 8.488281 12.535156 9.328125 11.585938 C 9.054688 10.648438 8.707031 8.730469 9.433594 8 C 11.234375 8 12.320312 9.164062 12.582031 9.480469 C 13.476562 9.175781 14.460938 9 15.496094 9 C 16.53125 9 17.519531 9.175781 18.417969 9.484375 C 18.675781 9.171875 19.761719 8 21.566406 8 C 22.296875 8.730469 21.945312 10.65625 21.667969 11.59375 C 22.503906 12.539062 22.996094 13.660156 22.996094 14.820312 C 22.996094 17.515625 21.089844 19.503906 17.101562 19.917969 C 18.199219 20.488281 19 22.101562 19 23.3125 L 19 26.046875 C 19 26.152344 18.976562 26.226562 18.964844 26.316406 C 23.640625 24.675781 27 20.234375 27 15 C 27 8.371094 21.628906 3 15 3 Z M 15 3 " />
+            </g>
+        </svg>
+    </a>
+</nav> 
+
+
+</aside>
+
+  <main class="content">
+    
+<article class="article">
+  <h1 class="article__title">HTML5 CSS3 JavaScript</h1>
+  <div class="markdown">
+    <h1>HTML5-CSS3-JavaScript — Gulp build</h1>
+<blockquote>
+<p>Gulp 4 is used</p>
+</blockquote>
+<h2>Getting started</h2>
+<p><code>gulp</code> - the basic command that runs the build for development using browser-sync</p>
+<p><code>gulp build</code> - the command for the production build of the project. All assets are compressed and optimized for hosting.</p>
+<p><code>gulp cache</code> - the command that should be run after <code>gulp build</code> if you need to upload new files to the hosting without caching.</p>
+<h2>Folder and file structure</h2>
+<pre><code>├── src/                          # Sources
+│   ├── js                        # Scripts
+│   │   ├── main.js               # Main script
+│   │   ├── components            # Js-components
+│   │   ├── vendor                # The folder for downloading local versions of libraries
+│   ├── less                      # Site styles (less preprocessor)
+│   │   └── main.less             # Main Style file
+│   │   └── global.less           # The file with global settings - resets, fonts, etc.
+│   │   └── vendor.less           # The file for connecting library styles from the vendor folder
+│   │   └── fonts.less            # The file for connecting fonts (you can use a mixin)
+│   │   └── mixins.less           # The file for connecting mixins from the mixins folder
+│   │   └── vars.less             # The file for writing css - or less-variables
+│   │   ├── components            # Less-components
+│   │   ├── mixins                # The folder for saving ready-made less components
+│   │   ├── vendor                # The folder for storing local css styles of libraries
+│   ├── partials                  # The folder for storing html parts of the page
+│   ├── img                       # The folder for storing images
+│   │   ├── svg                   # The special folder for converting svg to sprite
+│   ├── resources                 # The folder for storing other assets - php, video files, favicon, etc.
+│   │   ├── fonts                 # The folder for storing fonts in the woff2 format
+│   └── index.html                # Main html-file
+└── gulpfile.js                   # Gulp settings file
+└── package.json                  # File with the build settings and installed packages
+└── README.md                     # Build documentation
+</code></pre>
+<h2>Contents</h2>
+<ol>
+<li><a href="#npm-scripts">npm-scripts</a></li>
+<li><a href="#working-with-html">Working with html</a></li>
+<li><a href="#working-with-css">Working with CSS</a></li>
+<li><a href="#working-with-javascript">Working with JavaScript</a></li>
+<li><a href="#working-with-fonts">Working with fonts</a></li>
+<li><a href="#working-with-images">Working with images</a></li>
+<li><a href="#working-with-other-resources">Working with other resources</a></li>
+</ol>
+<h2>npm-scripts</h2>
+<p>You can call gulp scripts via npm.
+It is also possible to validate html in the assembly.</p>
+<p><code>npm run html</code> - launches the html validator, you need to run it if there are html files in the <strong>public</strong> folder.</p>
+<h2>Working with html</h2>
+<p>Thanks to the <strong>gulp-file-include</strong> plugin, you can split an html file into various templates that should be stored in the <strong>partials</strong> folder. It is convenient to divide an html page into sections.</p>
+<blockquote>
+<p>To insert html parts into the main file, use <code>@include('partials/filename.html')</code></p>
+</blockquote>
+<p>If you want to create a multi - page website, copy <strong>index.html</strong>, rename as you need, and use.</p>
+<p>When using the <code>gulp build</code> command, you will get a minified html code in one line for all html files.</p>
+<h2>Working with CSS</h2>
+<p>The assembly uses the <strong>less</strong> preprocessor.</p>
+<p>Styles written in <strong>components</strong> should be included in <strong>main.less</strong>.
+Styles from <strong>\fonts</strong>, <strong>\vars</strong> and <strong>\mixins</strong> are connected in <strong>global.less</strong>.</p>
+<p>To connect third-party css files (libraries) - put them in the <strong>vendor</strong> folder and connect them in the file <strong>vendor.less</strong>.</p>
+<p>If you want to create your own mixin, do it in the <strong>mixins</strong> folder, and then connect it to the <strong>\mixins.less</strong> file.</p>
+<p>If you want to use scss variables, connect <strong>\vars.less</strong> also to main.less or to any other place where it is needed, but be sure to remove <strong>:root</strong>.</p>
+<blockquote>
+<p>To connect css files, use the <code>@import</code>directive</p>
+</blockquote>
+<p>Three files are created in the resulting folder <strong>public/css</strong>: <br> <strong>main.css</strong> - for page styles, <br> <strong>global.css</strong> - for global styles, <br> <strong>vendor.css</strong> - for styles of all libraries used in the project.</p>
+<p>When using the <code>gulp build</code> command, you will get a minified css code in one line for all css files.</p>
+<h2>Working with JavaScript</h2>
+<p>Support for <code>import</code> and <code>require</code> is not implemented! Files are collected automatically from various folders.</p>
+<p>It is better to divide the JS code into components - small js files that contain their own implementation isolated from each other. Place such files in the <strong>components</strong> folder.</p>
+<p>In the file <strong>main.js</strong> does not connect anything, it is recommended for implementing the general logic of the site.</p>
+<p>To connect third-party js files (libraries), put them in the <strong>vendor</strong> folder.</p>
+<p>When using the <code>gulp build</code> command, you will get a minified js code in one line for all js files.</p>
+<h2>Working with fonts</h2>
+<p>The build supports only the <strong>woff2</strong> format.</p>
+<p>Upload the <strong>woff2</strong> files to the <strong>resources/fonts</strong> folder, and then call the <code>@font-face</code> mixin in the <strong>_fonts.scss</strong> file.</p>
+<h2>Working with images</h2>
+<p>Put any images other than <strong>favicon</strong> in the <strong>img</strong> folder.</p>
+<p>If you need to make an svg sprite, put the svg files needed for the sprite in the <strong>img/svg</strong> folder. Just leave other svg files in the <strong>img</strong> folder.</p>
+<p>When using the <code>gulp build</code> command, you will get minified images in the final folder <strong>img</strong>.</p>
+<h2>Working with other resources</h2>
+<p>Any resources (assets) of the project that do not have a corresponding folder assigned to them should be stored in the <strong>resources</strong> folder. These can be video files, php files, favicon, and others.</p>
+
+  </div>
+</article>
+
+  </main>
+  <script src="/create-gulp-template/js/main.js"></script>
+</body>
+</html>
