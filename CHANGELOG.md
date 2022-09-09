@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/UrijHoruzij/create-gulp-template/compare/v1.0.2...v1.0.3) (2022-09-09)
+
+
+### Bug Fixes
+
+* edit workflow ([b66da50](https://github.com/UrijHoruzij/create-gulp-template/commit/b66da504607472e84850eca4d4ab4a960906ed24))
+
 ## [1.0.2](https://github.com/UrijHoruzij/create-gulp-template/compare/v1.0.1...v1.0.2) (2022-09-09)
 
 
