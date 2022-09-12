@@ -1,54 +1,54 @@
-import fs from "fs";
-import { promisify } from "util";
+import fs from 'fs';
+import { promisify } from 'util';
 const writeFile = promisify(fs.writeFile);
 
 const htmlLibrary = (options) => {
-  switch (options.html) {
-    case "HTML5":
-      return `import fileInclude from "gulp-file-include";`;
-    case "Pug":
-      return `import pug from 'gulp-pug';`;
-    case "HAML":
-      return `import haml from 'gulp-haml';`;
-    case "Nunjucks":
-      return `import nunjucks from 'gulp-nunjucks';`;
-  }
+	switch (options.html) {
+		case 'HTML5':
+			return `import fileInclude from "gulp-file-include";`;
+		case 'Pug':
+			return `import pug from 'gulp-pug';`;
+		case 'HAML':
+			return `import haml from 'gulp-haml';`;
+		case 'Nunjucks':
+			return `import nunjucks from 'gulp-nunjucks';`;
+	}
 };
 const cssLibrary = (options) => {
-  switch (options.css) {
-    case "CSS3":
-      return ``;
-    case "SASS":
-      return `import dartSass from "sass";
+	switch (options.css) {
+		case 'CSS3':
+			return ``;
+		case 'SASS':
+			return `import dartSass from "sass";
 import gulpSass from "gulp-sass";
 const sass = gulpSass(dartSass);`;
-    case "LESS":
-      return `import less from "gulp-less";`;
-    case "Stylus":
-      return `import stylus from "gulp-stylus";`;
-  }
+		case 'LESS':
+			return `import less from "gulp-less";`;
+		case 'Stylus':
+			return `import stylus from "gulp-stylus";`;
+	}
 };
 const jsLibrary = (options) => {
-  switch (options.js) {
-    case "JavaScript":
-      return ``;
-    case "TypeScript":
-      return `import ts from 'gulp-typescript';`;
-    case "CoffeeScript":
-      return `import coffee from 'gulp-coffee';`;
-  }
+	switch (options.js) {
+		case 'JavaScript':
+			return ``;
+		case 'TypeScript':
+			return `import ts from 'gulp-typescript';`;
+		case 'CoffeeScript':
+			return `import coffee from 'gulp-coffee';`;
+	}
 };
 const html = (options) => {
-  const partTemplate = `
+	const partTemplate = `
     .pipe(gulpif(isProd, htmlmin({
       collapseWhitespace: true,
     })))
     .pipe(dest("./public"))
     .pipe(browserSync.stream());
   `;
-  switch (options.html) {
-    case "HTML5":
-      return `const html = () => {
+	switch (options.html) {
+		case 'HTML5':
+			return `const html = () => {
       return src(["./*.html"])
         .pipe(
           fileInclude({
@@ -58,73 +58,73 @@ const html = (options) => {
         )
         ${partTemplate}
     };`;
-    case "Pug":
-      return `const html = () => {
+		case 'Pug':
+			return `const html = () => {
       return src(["./*.pug"])
         .pipe(pug())
         ${partTemplate}
     };`;
-    case "HAML":
-      return `const html = () => {
+		case 'HAML':
+			return `const html = () => {
       return src(["./*.haml"])
         .pipe(haml({
 				compiler: 'visionmedia',
 			}))
       ${partTemplate}
     };`;
-    case "Nunjucks":
-      return `const html = () => {
+		case 'Nunjucks':
+			return `const html = () => {
       return src(["./*.html"])
         .pipe(nunjucks.compile())
         ${partTemplate}
     };`;
-  }
+	}
 };
 const styles = (options) => {
-  const plugins = `const plugins = [autoprefixer()]`;
-  const stylesTemplate = `
+	const plugins = `const plugins = [autoprefixer()]`;
+	const stylesTemplate = `
   .pipe(postcss(plugins))
   .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
   .pipe(gulpif(!isProd, sourcemaps.write(".")))
   .pipe(dest("./public/css/"))
   .pipe(browserSync.stream());
   `;
-  switch (options.css) {
-    case "CSS3":
-      return `const styles = () => {
+	switch (options.css) {
+		case 'CSS3':
+			return `const styles = () => {
   ${plugins}
   return src("./css/**/*.css")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     ${stylesTemplate}
 };`;
-    case "SASS":
-      return `const styles = () => {
+		case 'SASS':
+			return `const styles = () => {
   ${plugins}
   return src("./scss/**/*.scss")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(sass().on("error", notify.onError()))
    ${stylesTemplate}
 };`;
-    case "LESS":
-      return `const styles = () => {
+		case 'LESS':
+			return `const styles = () => {
   ${plugins}
   return src("./less/**/*.less")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(less().on("error", notify.onError()))
     ${stylesTemplate}
 };`;
-    case "Stylus":
-      return `const styles = () => {
+		case 'Stylus':
+			return `const styles = () => {
   ${plugins}
   return src("./stylus/**/*.styl")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(stylus().on("error", notify.onError()))
     ${stylesTemplate}
 };`;
-  }
+	}
 };
 const scripts = (options) => {
-  const scriptsTempalte = `
+	const scriptsTemplate = `
   .pipe(
       babel({
         presets: ["@babel/env"],
@@ -136,19 +136,19 @@ const scripts = (options) => {
     .pipe(dest("./public/js"))
     .pipe(browserSync.stream());
   `;
-  switch (options.js) {
-    case "JavaScript":
-      return `const scripts = () => {
+	switch (options.js) {
+		case 'JavaScript':
+			return `const scripts = () => {
   src("./js/vendor/**.js")
     .pipe(concat("vendor.js"))
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
     .pipe(dest("./public/js/"));
   return src("./js/main.js")
     .pipe(gulpif(!isProd, sourcemaps.init()))
-    ${scriptsTempalte}
+    ${scriptsTemplate}
 };`;
-    case "TypeScript":
-      return `const scripts = () => {
+		case 'TypeScript':
+			return `const scripts = () => {
   src("./ts/vendor/**.js")
     .pipe(concat("vendor.js"))
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
@@ -156,10 +156,10 @@ const scripts = (options) => {
   return src("./ts/main.ts")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(ts())
-    ${scriptsTempalte}
+    ${scriptsTemplate}
 };`;
-    case "CoffeeScript":
-      return `const scripts = () => {
+		case 'CoffeeScript':
+			return `const scripts = () => {
   src("./coffee/vendor/**.js")
     .pipe(concat("vendor.js"))
     .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
@@ -167,50 +167,50 @@ const scripts = (options) => {
   return src("./coffee/main.coffee")
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(coffee({bare: true})))
-    ${scriptsTempalte}
+    ${scriptsTemplate}
 };`;
-  }
+	}
 };
 const watchCSS = (options) => {
-  switch (options.css) {
-    case "CSS3":
-      return `watch("./css/**/*.css", styles);`;
-    case "SASS":
-      return `watch("./scss/**/*.scss", styles);`;
-    case "LESS":
-      return `watch("./less/**/*.less", styles);`;
-    case "Stylus":
-      return `watch("./stylus/**/*.styl", styles);`;
-  }
+	switch (options.css) {
+		case 'CSS3':
+			return `watch("./css/**/*.css", styles);`;
+		case 'SASS':
+			return `watch("./scss/**/*.scss", styles);`;
+		case 'LESS':
+			return `watch("./less/**/*.less", styles);`;
+		case 'Stylus':
+			return `watch("./stylus/**/*.styl", styles);`;
+	}
 };
 const watchJS = (options) => {
-  switch (options.js) {
-    case "JavaScript":
-      return `watch("./js/**/*.js", scripts);`;
-    case "TypeScript":
-      return `watch("./ts/**/*.ts", scripts);`;
-    case "CoffeeScript":
-      return `watch("./coffee/**/*.coffee", scripts);`;
-  }
+	switch (options.js) {
+		case 'JavaScript':
+			return `watch("./js/**/*.js", scripts);`;
+		case 'TypeScript':
+			return `watch("./ts/**/*.ts", scripts);`;
+		case 'CoffeeScript':
+			return `watch("./coffee/**/*.coffee", scripts);`;
+	}
 };
 const watchHTML = (options) => {
-  switch (options.html) {
-    case "HTML5":
-      return `watch("./partials/*.html", html);
+	switch (options.html) {
+		case 'HTML5':
+			return `watch("./partials/*.html", html);
   watch("./*.html", html);`;
-    case "Pug":
-      return `watch("./partials/*.pug", html);
+		case 'Pug':
+			return `watch("./partials/*.pug", html);
   watch("./*.pug", html);`;
-    case "HAML":
-      return `watch("./partials/*.haml", html);
+		case 'HAML':
+			return `watch("./partials/*.haml", html);
   watch("./*.haml", html);`;
-    case "Nunjucks":
-      return `watch("./partials/*.html", html);
+		case 'Nunjucks':
+			return `watch("./partials/*.html", html);
   watch("./*.html", html);`;
-  }
+	}
 };
 const createGulpFile = async (options) => {
-  let gulpfileTemplate = `import gulp from "gulp";
+	let gulpfileTemplate = `import gulp from "gulp";
 import babel from "gulp-babel";
 import cleanCSS from "gulp-clean-css";
 import postcss from "gulp-postcss";
@@ -347,7 +347,7 @@ export const build = series(
 export const deploy = series(deployBuild);
 export const cache = series(cachePublic, rewrite);
   `;
-  writeFile(`${process.cwd()}/gulpfile.js`, gulpfileTemplate, "utf8");
+	writeFile(`${process.cwd()}/gulpfile.js`, gulpfileTemplate, 'utf8');
 };
 
 export default createGulpFile;

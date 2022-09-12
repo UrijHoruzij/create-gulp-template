@@ -5,11 +5,9 @@ tags: post
 layout: layouts/post.njk
 ---
 
-# HTML5-SASS-JavaScript — Gulp build
-
 > Gulp 4 is used
 
-## Getting started
+### Getting started
 
 `gulp` - the basic command that runs the build for development using browser-sync
 
@@ -17,7 +15,7 @@ layout: layouts/post.njk
 
 `gulp cache` - the command that should be run after `gulp build` if you need to upload new files to the hosting without caching.
 
-## Folder and file structure
+### Folder and file structure
 
 ```
 ├── src/                          # Sources
@@ -46,7 +44,7 @@ layout: layouts/post.njk
 └── README.md                     # Build documentation
 ```
 
-## Contents
+### Contents
 
 1. [npm-scripts](#npm-scripts)
 2. [Working with html](#working-with-html)
@@ -56,14 +54,14 @@ layout: layouts/post.njk
 6. [Working with images](#working-with-images)
 7. [Working with other resources](#working-with-other-resources)
 
-## npm-scripts
+### npm-scripts
 
 You can call gulp scripts via npm.
 It is also possible to validate html in the assembly.
 
 `npm run html` - launches the html validator, you need to run it if there are html files in the **public** folder.
 
-## Working with html
+### Working with html
 
 Thanks to the **gulp-file-include** plugin, you can split an html file into various templates that should be stored in the **partials** folder. It is convenient to divide an html page into sections.
 
@@ -73,7 +71,7 @@ If you want to create a multi - page website, copy **index.html**, rename as you
 
 When using the `gulp build` command, you will get a minified html code in one line for all html files.
 
-## Working with CSS
+### Working with CSS
 
 The assembly uses the **sass** preprocessor in the **scss** syntax.
 
@@ -92,7 +90,7 @@ Three files are created in the resulting folder **public/css**: <br> **main.css*
 
 When using the `gulp build` command, you will get a minified css code in one line for all css files.
 
-## Working with JavaScript
+### Working with JavaScript
 
 Support for `import` and `require` is not implemented! Files are collected automatically from various folders.
 
@@ -104,13 +102,13 @@ To connect third-party js files (libraries), put them in the **vendor** folder.
 
 When using the `gulp build` command, you will get a minified js code in one line for all js files.
 
-## Working with fonts
+### Working with fonts
 
 The build supports only the **woff2** format.
 
 Upload the **woff2** files to the **resources/fonts** folder, and then call the `@font-face` mixin in the **\_fonts.scss** file.
 
-## Working with images
+### Working with images
 
 Put any images other than **favicon** in the **img** folder.
 
@@ -118,6 +116,6 @@ If you need to make an svg sprite, put the svg files needed for the sprite in th
 
 When using the `gulp build` command, you will get minified images in the final folder **img**.
 
-## Working with other resources
+### Working with other resources
 
 Any resources (assets) of the project that do not have a corresponding folder assigned to them should be stored in the **resources** folder. These can be video files, php files, favicon, and others.
