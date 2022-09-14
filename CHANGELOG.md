@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v1.0.3...v1.1.0) (2022-09-14)
+
+
+### Features
+
+* optimization and add libraries.  BREAKING CHANGES: optimization and add libraries ([e500aba](https://github.com/UrijHoruzij/create-gulp-template/commit/e500aba7de7604320f8dcaf5fc1e859d0daaf5cf))
+
 ## [1.0.3](https://github.com/UrijHoruzij/create-gulp-template/compare/v1.0.2...v1.0.3) (2022-09-09)
 
 
