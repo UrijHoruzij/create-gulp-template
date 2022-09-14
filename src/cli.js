@@ -60,7 +60,6 @@ const promptForMissingOptions = async (options) => {
 		{
 			name: 'lib',
 			type: 'checkbox',
-			// type: 'list',
 			message: 'Select the library',
 			choices: ['locomotive scroll', 'Jquery', 'GSAP', 'Slick.js', 'Fotorama.js', 'fullPage.js'],
 		},

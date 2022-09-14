@@ -73,13 +73,13 @@ export const createProject = async (options) => {
 				task: () => initGit(),
 				enabled: () => options.git,
 			},
-			// {
-			//   title: "Install dependencies",
-			//   task: () =>
-			//     projectInstall({
-			//       cwd: process.cwd(),
-			//     }),
-			// },
+			{
+				title: 'Install dependencies',
+				task: () =>
+					projectInstall({
+						cwd: process.cwd(),
+					}),
+			},
 		],
 		{
 			exitOnError: false,

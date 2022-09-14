@@ -1,3 +1,1 @@
-## Future improvements
-
-- Add libraries
+## Create gulp template
