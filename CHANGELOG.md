@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v1.1.0...v2.0.0) (2022-09-19)
+
+
+### Code Refactoring
+
+* add block try-catch ([bd7e54e](https://github.com/UrijHoruzij/create-gulp-template/commit/bd7e54e903a09e0610cbff705c391a953f60f8c3))
+
+
+### BREAKING CHANGES
+
+* add libraries
+
 # [1.1.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v1.0.3...v1.1.0) (2022-09-14)
 
 
