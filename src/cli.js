@@ -55,7 +55,7 @@ const promptForMissingOptions = async (options) => {
 		//   name: "framework",
 		//   type: "list",
 		//   message: "Select the framework",
-		//   choices: ["Tailwind CSS", "Bootstrap"],
+		//   choices: ["Materialize", "Bootstrap"],
 		// },
 		{
 			name: 'lib',

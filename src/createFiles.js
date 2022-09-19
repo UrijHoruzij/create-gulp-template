@@ -1,9 +1,10 @@
-import fs from "fs";
-import { promisify } from "util";
+import fs from 'fs';
+import { promisify } from 'util';
 const writeFile = promisify(fs.writeFile);
 
 const createFiles = async () => {
-  const editorTemplate = `root = true
+	try {
+		const editorTemplate = `root = true
 [*]
 indent_style = space
 indent_size = 2
@@ -17,7 +18,7 @@ block_comment_end = */
 
 [*.md]
 indent_size = 4`;
-  const prettierTemplate = `{
+		const prettierTemplate = `{
     "printWidth": 120,
     "useTabs": true,
     "semi":true,
@@ -29,9 +30,13 @@ indent_size = 4`;
     "bracketSameLine": true,
     "arrowParens": "always"
 }`;
-  const browserslistTemplate = `last 2 versions`;
-  writeFile(`${process.cwd()}/.editorconfig`, editorTemplate, "utf8");
-  writeFile(`${process.cwd()}/.prettierrc`, prettierTemplate, "utf8");
-  writeFile(`${process.cwd()}/.browserslistrc`, browserslistTemplate, "utf8");
+		const browserslistTemplate = `last 2 versions`;
+		writeFile(`${process.cwd()}/.editorconfig`, editorTemplate, 'utf8');
+		writeFile(`${process.cwd()}/.prettierrc`, prettierTemplate, 'utf8');
+		writeFile(`${process.cwd()}/.browserslistrc`, browserslistTemplate, 'utf8');
+	} catch (err) {
+		console.log(chalk.red.bold('ERROR'));
+		console.log(chalk.red(err));
+	}
 };
 export default createFiles;

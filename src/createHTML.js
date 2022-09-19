@@ -1,9 +1,10 @@
-import fs from "fs";
-import { promisify } from "util";
+import fs from 'fs';
+import { promisify } from 'util';
 const writeFile = promisify(fs.writeFile);
 
 const createHTML = async (options) => {
-  const htmlTemplate = `<!DOCTYPE html>
+	try {
+		const htmlTemplate = `<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -21,12 +22,12 @@ const createHTML = async (options) => {
     <script src="js/main.js"></script>
 </body>
 </html>`;
-  const htmlHeaderTemplate = `<header>
+		const htmlHeaderTemplate = `<header>
   </header>
 `;
-  const htmlFooterTemplate = `<footer>
+		const htmlFooterTemplate = `<footer>
   </footer>`;
-  const pugTemplate = `doctype html
+		const pugTemplate = `doctype html
 html(lang="ru")
   head
     meta(charset="utf-8")
@@ -41,9 +42,9 @@ html(lang="ru")
       // include partials/header.pug
       script(src="js/vendor.js")
       script(src="js/main.js")`;
-  const pugHeaderTemplate = `header`;
-  const pugFooterTemplate = `footer`;
-  const hamlTemplate = `!!! 5
+		const pugHeaderTemplate = `header`;
+		const pugFooterTemplate = `footer`;
+		const hamlTemplate = `!!! 5
 %html
   %head
     %meta{charset: "utf-8"}
@@ -57,7 +58,7 @@ html(lang="ru")
     %script{src:"js/vendor.js"}
     %script{src:"js/main.js"}
   `;
-  const nunjucksTemplate = `<!doctype html>
+		const nunjucksTemplate = `<!doctype html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -75,37 +76,25 @@ html(lang="ru")
 </body>
 </html>
   `;
-  switch (options.html) {
-    case "HTML5":
-      writeFile(`${process.cwd()}/index.html`, htmlTemplate, "utf8");
-      writeFile(
-        `${process.cwd()}/partials/header.html`,
-        htmlHeaderTemplate,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/partials/footer.html`,
-        htmlFooterTemplate,
-        "utf8"
-      );
-      break;
-    case "Pug":
-      writeFile(`${process.cwd()}/index.pug`, pugTemplate, "utf8");
-      writeFile(
-        `${process.cwd()}/partials/header.pug`,
-        pugHeaderTemplate,
-        "utf8"
-      );
-      writeFile(
-        `${process.cwd()}/partials/footer.pug`,
-        pugFooterTemplate,
-        "utf8"
-      );
-      break;
-    case "HAML":
-      return writeFile(`${process.cwd()}/index.haml`, hamlTemplate, "utf8");
-    case "Nunjucks":
-      return writeFile(`${process.cwd()}/index.html`, nunjucksTemplate, "utf8");
-  }
+		switch (options.html) {
+			case 'HTML5':
+				writeFile(`${process.cwd()}/index.html`, htmlTemplate, 'utf8');
+				writeFile(`${process.cwd()}/partials/header.html`, htmlHeaderTemplate, 'utf8');
+				writeFile(`${process.cwd()}/partials/footer.html`, htmlFooterTemplate, 'utf8');
+				break;
+			case 'Pug':
+				writeFile(`${process.cwd()}/index.pug`, pugTemplate, 'utf8');
+				writeFile(`${process.cwd()}/partials/header.pug`, pugHeaderTemplate, 'utf8');
+				writeFile(`${process.cwd()}/partials/footer.pug`, pugFooterTemplate, 'utf8');
+				break;
+			case 'HAML':
+				return writeFile(`${process.cwd()}/index.haml`, hamlTemplate, 'utf8');
+			case 'Nunjucks':
+				return writeFile(`${process.cwd()}/index.html`, nunjucksTemplate, 'utf8');
+		}
+	} catch (err) {
+		console.log(chalk.red.bold('ERROR'));
+		console.log(chalk.red(err));
+	}
 };
 export default createHTML;
