@@ -1,4 +1,5 @@
 import fs from 'fs';
+import chalk from 'chalk';
 import { promisify } from 'util';
 const writeFile = promisify(fs.writeFile);
 
