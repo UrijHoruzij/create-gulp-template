@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/UrijHoruzij/create-gulp-template/compare/v2.0.0...v2.0.1) (2022-09-21)
+
+
+### Bug Fixes
+
+* add import chalk ([a6eabfb](https://github.com/UrijHoruzij/create-gulp-template/commit/a6eabfb641673c6829b3fb18445fcc3f3541d1f2))
+
 # [2.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v1.1.0...v2.0.0) (2022-09-19)
 
 
