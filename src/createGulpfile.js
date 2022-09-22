@@ -40,20 +40,13 @@ const jsLibrary = (options) => {
 	}
 };
 const html = (options) => {
-  let pathHtml = changePathHTML(options);
+	let pathHtml = changePathHTML(options);
 	let extHtml = pathHtml == 'njk' ? 'html' : pathHtml;
 	return `const html = () => {
       return src(["./*.${extHtml}"])
-      ${pathHtml == 'html' ? '.pipe(
-        fileInclude({
-          prefix: "@",
-          basepath: "@file",
-        })
-      )' : ''}
+      ${pathHtml == 'html' ? '.pipe(fileInclude({prefix: "@",basepath: "@file"}))' : ''}
       ${pathHtml == 'pug' ? '.pipe(pug())' : ''}
-      ${pathHtml == 'haml' ? '.pipe(haml({
-        compiler: "visionmedia",
-      }))' : ''}
+      ${pathHtml == 'haml' ? '.pipe(haml({compiler: "visionmedia"}))' : ''}
       ${pathHtml == 'njk' ? '.pipe(nunjucks.compile())' : ''}
       .pipe(gulpif(isProd, htmlmin({
         collapseWhitespace: true,
@@ -63,10 +56,10 @@ const html = (options) => {
     };`;
 };
 const styles = (options) => {
-  let pathCss = changePathCSS(options);
+	let pathCss = changePathCSS(options);
 	let extCss = pathCss == 'stylus' ? 'styl' : pathCss;
 	const plugins = `const plugins = [autoprefixer()]`;
-  return `const styles = () => {
+	return `const styles = () => {
   ${plugins}
   return src("./${pathCss}/**/*.${extCss}")
     .pipe(gulpif(!isProd, sourcemaps.init()))
@@ -117,7 +110,7 @@ const watchJS = (options) => {
 };
 const watchHTML = (options) => {
 	let pathHtml = changePathHTML(options);
-  let extHtml = pathHtml == 'njk' ? 'html' : pathHtml;
+	let extHtml = pathHtml == 'njk' ? 'html' : pathHtml;
 	return `watch("./partials/*.${extHtml}", html);
   watch("./*.${extHtml}", html);`;
 };
