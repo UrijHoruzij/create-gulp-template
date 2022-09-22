@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/UrijHoruzij/create-gulp-template/compare/v3.0.1...v3.0.2) (2022-09-22)
+
+
+### Bug Fixes
+
+* add cli frameworks ([021ce77](https://github.com/UrijHoruzij/create-gulp-template/commit/021ce7763dfcb58084eabc4830aadd15efb140cd))
+
 ## [3.0.1](https://github.com/UrijHoruzij/create-gulp-template/compare/v3.0.0...v3.0.1) (2022-09-22)
 
 
