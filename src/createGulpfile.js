@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { promisify } from 'util';
+import { changePathHTML, changePathCSS, changePathJS } from './util';
 const writeFile = promisify(fs.writeFile);
 
 const htmlLibrary = (options) => {
@@ -39,93 +40,61 @@ const jsLibrary = (options) => {
 	}
 };
 const html = (options) => {
-	const partTemplate = `
-    .pipe(gulpif(isProd, htmlmin({
-      collapseWhitespace: true,
-    })))
-    .pipe(dest("./public"))
-    .pipe(browserSync.stream());
-  `;
-	switch (options.html) {
-		case 'HTML5':
-			return `const html = () => {
-      return src(["./*.html"])
-        .pipe(
-          fileInclude({
-            prefix: "@",
-            basepath: "@file",
-          })
-        )
-        ${partTemplate}
+  let pathHtml = changePathHTML(options);
+	let extHtml = pathHtml == 'njk' ? 'html' : pathHtml;
+	return `const html = () => {
+      return src(["./*.${extHtml}"])
+      ${pathHtml == 'html' ? '.pipe(
+        fileInclude({
+          prefix: "@",
+          basepath: "@file",
+        })
+      )' : ''}
+      ${pathHtml == 'pug' ? '.pipe(pug())' : ''}
+      ${pathHtml == 'haml' ? '.pipe(haml({
+        compiler: "visionmedia",
+      }))' : ''}
+      ${pathHtml == 'njk' ? '.pipe(nunjucks.compile())' : ''}
+      .pipe(gulpif(isProd, htmlmin({
+        collapseWhitespace: true,
+      })))
+      .pipe(dest("./public"))
+      .pipe(browserSync.stream());
     };`;
-		case 'Pug':
-			return `const html = () => {
-      return src(["./*.pug"])
-        .pipe(pug())
-        ${partTemplate}
-    };`;
-		case 'HAML':
-			return `const html = () => {
-      return src(["./*.haml"])
-        .pipe(haml({
-				compiler: 'visionmedia',
-			}))
-      ${partTemplate}
-    };`;
-		case 'Nunjucks':
-			return `const html = () => {
-      return src(["./*.html"])
-        .pipe(nunjucks.compile())
-        ${partTemplate}
-    };`;
-	}
 };
 const styles = (options) => {
+  let pathCss = changePathCSS(options);
+	let extCss = pathCss == 'stylus' ? 'styl' : pathCss;
 	const plugins = `const plugins = [autoprefixer()]`;
-	const stylesTemplate = `
-  .pipe(postcss(plugins))
-  .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
-  .pipe(gulpif(!isProd, sourcemaps.write(".")))
-  .pipe(dest("./public/css/"))
-  .pipe(browserSync.stream());
-  `;
-	switch (options.css) {
-		case 'CSS3':
-			return `const styles = () => {
+  return `const styles = () => {
   ${plugins}
-  return src("./css/**/*.css")
+  return src("./${pathCss}/**/*.${extCss}")
     .pipe(gulpif(!isProd, sourcemaps.init()))
-    ${stylesTemplate}
+    ${pathCss == 'scss' ? '.pipe(sass().on("error", notify.onError()))' : ''}
+    ${pathCss == 'less' ? '.pipe(less().on("error", notify.onError()))' : ''}
+    ${pathCss == 'stylus' ? '.pipe(stylus().on("error", notify.onError()))' : ''}
+    .pipe(postcss(plugins))
+    .pipe(gulpif(isProd, cleanCSS({ level: 2 })))
+    .pipe(gulpif(!isProd, sourcemaps.write(".")))
+    .pipe(dest("./public/css/"))
+    .pipe(browserSync.stream());
 };`;
-		case 'SASS':
-			return `const styles = () => {
-  ${plugins}
-  return src("./scss/**/*.scss")
-    .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(sass().on("error", notify.onError()))
-   ${stylesTemplate}
-};`;
-		case 'LESS':
-			return `const styles = () => {
-  ${plugins}
-  return src("./less/**/*.less")
-    .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(less().on("error", notify.onError()))
-    ${stylesTemplate}
-};`;
-		case 'Stylus':
-			return `const styles = () => {
-  ${plugins}
-  return src("./stylus/**/*.styl")
-    .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(stylus().on("error", notify.onError()))
-    ${stylesTemplate}
-};`;
-	}
 };
 const scripts = (options) => {
-	const scriptsTemplate = `
-  .pipe(
+	let pathJs = changePathJS(options);
+	return `const scripts = () => {
+  src("./${pathJs}/vendor/**.js")
+    .pipe(concat("vendor.js"))
+    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
+    .pipe(dest("./public/js/"));
+  src("./${pathJs}/*.js")
+    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
+    .pipe(dest("./public/js/"));
+  return src("./${pathJs}/main.${pathJs}")
+    .pipe(gulpif(!isProd, sourcemaps.init()))
+    ${pathJs == 'ts' ? '.pipe(ts())' : ''}
+    ${pathJs == 'coffee' ? '.pipe(coffee({bare: true}))' : ''}
+    .pipe(
       babel({
         presets: ["@babel/env"],
       })
@@ -135,79 +104,22 @@ const scripts = (options) => {
     .pipe(gulpif(!isProd, sourcemaps.write(".")))
     .pipe(dest("./public/js"))
     .pipe(browserSync.stream());
-  `;
-	switch (options.js) {
-		case 'JavaScript':
-			return `const scripts = () => {
-  src("./js/vendor/**.js")
-    .pipe(concat("vendor.js"))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(dest("./public/js/"));
-  return src("./js/main.js")
-    .pipe(gulpif(!isProd, sourcemaps.init()))
-    ${scriptsTemplate}
 };`;
-		case 'TypeScript':
-			return `const scripts = () => {
-  src("./ts/vendor/**.js")
-    .pipe(concat("vendor.js"))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(dest("./public/js/"));
-  return src("./ts/main.ts")
-    .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(ts())
-    ${scriptsTemplate}
-};`;
-		case 'CoffeeScript':
-			return `const scripts = () => {
-  src("./coffee/vendor/**.js")
-    .pipe(concat("vendor.js"))
-    .pipe(gulpif(isProd, uglify().on("error", notify.onError())))
-    .pipe(dest("./public/js/"));
-  return src("./coffee/main.coffee")
-    .pipe(gulpif(!isProd, sourcemaps.init()))
-    .pipe(coffee({bare: true})))
-    ${scriptsTemplate}
-};`;
-	}
 };
 const watchCSS = (options) => {
-	switch (options.css) {
-		case 'CSS3':
-			return `watch("./css/**/*.css", styles);`;
-		case 'SASS':
-			return `watch("./scss/**/*.scss", styles);`;
-		case 'LESS':
-			return `watch("./less/**/*.less", styles);`;
-		case 'Stylus':
-			return `watch("./stylus/**/*.styl", styles);`;
-	}
+	let pathCss = changePathCSS(options);
+	let extCss = pathCss == 'stylus' ? 'styl' : pathCss;
+	return `watch("./${pathCss}/**/*.${extCss}", styles);`;
 };
 const watchJS = (options) => {
-	switch (options.js) {
-		case 'JavaScript':
-			return `watch("./js/**/*.js", scripts);`;
-		case 'TypeScript':
-			return `watch("./ts/**/*.ts", scripts);`;
-		case 'CoffeeScript':
-			return `watch("./coffee/**/*.coffee", scripts);`;
-	}
+	let pathJs = changePathJS(options);
+	return `watch("./${pathJs}/**/*.${pathJs}", scripts);`;
 };
 const watchHTML = (options) => {
-	switch (options.html) {
-		case 'HTML5':
-			return `watch("./partials/*.html", html);
-  watch("./*.html", html);`;
-		case 'Pug':
-			return `watch("./partials/*.pug", html);
-  watch("./*.pug", html);`;
-		case 'HAML':
-			return `watch("./partials/*.haml", html);
-  watch("./*.haml", html);`;
-		case 'Nunjucks':
-			return `watch("./partials/*.html", html);
-  watch("./*.html", html);`;
-	}
+	let pathHtml = changePathHTML(options);
+  let extHtml = pathHtml == 'njk' ? 'html' : pathHtml;
+	return `watch("./partials/*.${extHtml}", html);
+  watch("./*.${extHtml}", html);`;
 };
 const createGulpFile = async (options) => {
 	let gulpfileTemplate = `import gulp from "gulp";
@@ -218,7 +130,6 @@ import autoprefixer from "autoprefixer";
 import uglifyES from "gulp-uglify-es";
 import del from "del";
 import browserSync from "browser-sync";
-import svgSprite from "gulp-svg-sprite";
 import sourcemaps from "gulp-sourcemaps";
 import rev from "gulp-rev";
 import revRewrite from "gulp-rev-rewrite";
@@ -300,20 +211,6 @@ const deployBuild = () => {
 		}))
 }
 
-const svgSprites = () => {
-  return src("./img/svg/**.svg")
-    .pipe(
-      svgSprite({
-        mode: {
-          stack: {
-            sprite: "../sprite.svg",
-          },
-        },
-      })
-    )
-    .pipe(dest("./public/img"));
-};
-
 ${html(options)}
 ${styles(options)}
 ${scripts(options)}
@@ -328,20 +225,18 @@ const watchFiles = () => {
   ${watchHTML(options)}
   ${watchJS(options)}
   watch("./resources/**", resources);
-  watch("./img/*.{jpg,jpeg,png,svg}", images);
-  watch("./img/**/*.{jpg,jpeg,png}", images);
-  watch("./img/svg/**.svg", svgSprites);
+  watch("./img/**/*.{jpg,jpeg,png,svg}", images);
 };
 
 export default series(
   clean,
-  parallel(html, scripts, styles, resources, images, svgSprites),
+  parallel(html, scripts, styles, resources, images),
   watchFiles
 );
 
 export const build = series(
   parallel(toProd, clean),
-  parallel(html, scripts, styles, resources, images, svgSprites),
+  parallel(html, scripts, styles, resources, images),
 );
 
 export const deploy = series(deployBuild);

@@ -1,3 +1,15 @@
+export const changePathHTML = (options) => {
+	switch (options.html) {
+		case 'HTML5':
+			return `html`;
+		case 'Pug':
+			return `pug`;
+		case 'HAML':
+			retunr`haml`;
+		case 'Nunjucks':
+			return `njk`;
+	}
+};
 export const changePathCSS = (options) => {
 	switch (options.css) {
 		case 'SASS':
@@ -19,4 +31,7 @@ export const changePathJS = (options) => {
 		case 'CoffeeScript':
 			return 'coffee';
 	}
+};
+export const pathNodeModules = (path, pathFile) => {
+	return path.resolve(path.dirname(__filename), pathFile);
 };

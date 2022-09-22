@@ -12,7 +12,6 @@ const createJsFolders = (prefix) => {
 };
 const createFolders = async (options) => {
 	fs.mkdirSync('img');
-	fs.mkdirSync('img/svg');
 	fs.mkdirSync('partials');
 	fs.mkdirSync('resources');
 	fs.mkdirSync('resources/fonts');

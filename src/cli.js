@@ -52,10 +52,10 @@ const promptForMissingOptions = async (options) => {
 			choices: ['JavaScript', 'TypeScript', 'CoffeeScript'],
 		},
 		// {
-		//   name: "framework",
-		//   type: "list",
-		//   message: "Select the framework",
-		//   choices: ["Materialize", "Bootstrap"],
+		// 	name: 'framework',
+		// 	type: 'list',
+		// 	message: 'Select the framework',
+		// 	choices: ['Materialize', 'Bootstrap 3', 'Bootstrap 4', 'Bootstrap 5'],
 		// },
 		{
 			name: 'lib',
@@ -76,6 +76,7 @@ const promptForMissingOptions = async (options) => {
 		html: answers.html,
 		css: answers.css,
 		js: answers.js,
+		// framework: answers.framework,
 		lib: answers.lib,
 		git: answers.gitInit,
 	};

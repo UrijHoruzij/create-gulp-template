@@ -1,12 +1,16 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import { promisify } from 'util';
-import { changePathCSS } from './util';
+import path from 'path';
+import { changePathCSS, pathNodeModules } from './util';
 const writeFile = promisify(fs.writeFile);
 
 const createCSS = async (options) => {
 	try {
-		const contentNormalize = fs.readFileSync('../node_modules/normalize.css/normalize.css', 'utf8');
+		const contentNormalize = fs.readFileSync(
+			pathNodeModules(path, '../node_modules/normalize.css/normalize.css'),
+			'utf8',
+		);
 		const contentMain = `@import "vars";
 @import "mixins";
 @import "fonts";`;
