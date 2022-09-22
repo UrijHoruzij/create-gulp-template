@@ -51,12 +51,12 @@ const promptForMissingOptions = async (options) => {
 			message: 'Select the preprocessor',
 			choices: ['JavaScript', 'TypeScript', 'CoffeeScript'],
 		},
-		// {
-		// 	name: 'framework',
-		// 	type: 'list',
-		// 	message: 'Select the framework',
-		// 	choices: ['Materialize', 'Bootstrap 3', 'Bootstrap 4', 'Bootstrap 5'],
-		// },
+		{
+			name: 'framework',
+			type: 'list',
+			message: 'Select the framework',
+			choices: ['Materialize', 'Bootstrap 3', 'Bootstrap 4', 'Bootstrap 5'],
+		},
 		{
 			name: 'lib',
 			type: 'checkbox',
@@ -76,7 +76,7 @@ const promptForMissingOptions = async (options) => {
 		html: answers.html,
 		css: answers.css,
 		js: answers.js,
-		// framework: answers.framework,
+		framework: answers.framework,
 		lib: answers.lib,
 		git: answers.gitInit,
 	};
