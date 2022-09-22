@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/UrijHoruzij/create-gulp-template/compare/v3.0.0...v3.0.1) (2022-09-22)
+
+
+### Bug Fixes
+
+* function html on createGulpfile ([69d2389](https://github.com/UrijHoruzij/create-gulp-template/commit/69d2389d9375520f64aeb984e3b4932faf8a5b92))
+
 # [3.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v2.0.1...v3.0.0) (2022-09-22)
 
 
