@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/UrijHoruzij/create-gulp-template/compare/v3.0.2...v3.0.3) (2022-09-22)
+
+
+### Bug Fixes
+
+* add point Without a framework ([e8e65b6](https://github.com/UrijHoruzij/create-gulp-template/commit/e8e65b6fe58b3c16705075dd61da32ba4494b473))
+
 ## [3.0.2](https://github.com/UrijHoruzij/create-gulp-template/compare/v3.0.1...v3.0.2) (2022-09-22)
 
 
