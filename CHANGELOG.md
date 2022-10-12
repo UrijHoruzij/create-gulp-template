@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v3.0.3...v4.0.0) (2022-10-12)
+
+
+### Features
+
+* add snippets ([0dd44f5](https://github.com/UrijHoruzij/create-gulp-template/commit/0dd44f58f5b0f9ce11b11fffbb85dfa4ad8760d4))
+
+
+### BREAKING CHANGES
+
+* refactor code
+
 ## [3.0.3](https://github.com/UrijHoruzij/create-gulp-template/compare/v3.0.2...v3.0.3) (2022-09-22)
 
 
