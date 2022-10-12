@@ -1,9 +1,7 @@
-import fs from "fs";
-import { promisify } from "util";
-const writeFile = promisify(fs.writeFile);
+import fs from 'fs';
 
 const createGitignore = async () => {
-  const gitignoreTemplate = `# Logs
+	const gitignoreTemplate = `# Logs
 logs
 *.log
 npm-debug.log*
@@ -133,6 +131,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*`;
-  return writeFile(`${process.cwd()}/.gitignore`, gitignoreTemplate, "utf8");
+	fs.writeFileSync(`${process.cwd()}/.gitignore`, gitignoreTemplate, 'utf8');
 };
 export default createGitignore;

@@ -61,7 +61,16 @@ const promptForMissingOptions = async (options) => {
 			name: 'lib',
 			type: 'checkbox',
 			message: 'Select the library',
-			choices: ['locomotive scroll', 'Jquery', 'GSAP', 'Slick.js', 'Fotorama.js', 'fullPage.js'],
+			choices: [
+				'Swiper.js',
+				'locomotive scroll',
+				'Jquery',
+				'GSAP',
+				'Slick.js',
+				'Fotorama.js',
+				'fullPage.js',
+				'popper.js',
+			],
 		},
 		{
 			name: 'gitInit',
@@ -83,9 +92,14 @@ const promptForMissingOptions = async (options) => {
 };
 
 export const cli = async (args) => {
-	clear();
-	console.log(chalk.red(figlet.textSync('Create-Gulp-Template', { horizontalLayout: 'default' })));
-	let options = parseArgumentsIntoOptions(args);
-	options = await promptForMissingOptions(options);
-	await createProject(options);
+	try {
+		clear();
+		console.log(chalk.red(figlet.textSync('Create-Gulp-Template', { horizontalLayout: 'default' })));
+		let options = parseArgumentsIntoOptions(args);
+		options = await promptForMissingOptions(options);
+		await createProject(options);
+	} catch (err) {
+		console.log(chalk.red.bold('ERROR'));
+		console.log(chalk.red(err));
+	}
 };

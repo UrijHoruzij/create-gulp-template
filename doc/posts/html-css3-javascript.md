@@ -1,9 +1,18 @@
 ---
-title: HTML5 CSS3 JavaScript
+title: HTML
 description: This is the first post on my blog
 tags: post
 layout: layouts/post.njk
 ---
+
+```
+├── src/                          # Sources
+│   ├── partials                  # The folder for storing html parts of the page
+│   └── index.html                # Main html-file
+└── gulpfile.js                   # Gulp settings file
+└── package.json                  # File with the build settings and installed packages
+└── README.md                     # Build documentation
+```
 
 > Gulp 4 is used
 

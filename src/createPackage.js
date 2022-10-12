@@ -1,6 +1,4 @@
 import fs from 'fs';
-import { promisify } from 'util';
-const writeFile = promisify(fs.writeFile);
 
 const createPackage = (options) => {
 	let devDependencies = [
@@ -110,7 +108,7 @@ const createPackage = (options) => {
 		license: 'MIT',
 		devDependencies: dependencies,
 	};
-	return writeFile(`${process.cwd()}/package.json`, JSON.stringify(packageTemplate, null, 4), 'utf8');
+	fs.writeFileSync(`${process.cwd()}/package.json`, JSON.stringify(packageTemplate, null, 4), 'utf8');
 };
 
 export default createPackage;

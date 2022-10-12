@@ -1,11 +1,7 @@
 import fs from 'fs';
-import chalk from 'chalk';
-import { promisify } from 'util';
-const writeFile = promisify(fs.writeFile);
 
 const createHTML = async (options) => {
-	try {
-		const htmlTemplate = `<!DOCTYPE html>
+	const htmlTemplate = `<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -23,12 +19,12 @@ const createHTML = async (options) => {
     <script src="js/main.js"></script>
 </body>
 </html>`;
-		const htmlHeaderTemplate = `<header>
+	const htmlHeaderTemplate = `<header>
   </header>
 `;
-		const htmlFooterTemplate = `<footer>
+	const htmlFooterTemplate = `<footer>
   </footer>`;
-		const pugTemplate = `doctype html
+	const pugTemplate = `doctype html
 html(lang="ru")
   head
     meta(charset="utf-8")
@@ -43,9 +39,9 @@ html(lang="ru")
       // include partials/header.pug
       script(src="js/vendor.js")
       script(src="js/main.js")`;
-		const pugHeaderTemplate = `header`;
-		const pugFooterTemplate = `footer`;
-		const hamlTemplate = `!!! 5
+	const pugHeaderTemplate = `header`;
+	const pugFooterTemplate = `footer`;
+	const hamlTemplate = `!!! 5
 %html
   %head
     %meta{charset: "utf-8"}
@@ -59,7 +55,7 @@ html(lang="ru")
     %script{src:"js/vendor.js"}
     %script{src:"js/main.js"}
   `;
-		const nunjucksTemplate = `<!doctype html>
+	const nunjucksTemplate = `<!doctype html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -77,25 +73,23 @@ html(lang="ru")
 </body>
 </html>
   `;
-		switch (options.html) {
-			case 'HTML5':
-				writeFile(`${process.cwd()}/index.html`, htmlTemplate, 'utf8');
-				writeFile(`${process.cwd()}/partials/header.html`, htmlHeaderTemplate, 'utf8');
-				writeFile(`${process.cwd()}/partials/footer.html`, htmlFooterTemplate, 'utf8');
-				break;
-			case 'Pug':
-				writeFile(`${process.cwd()}/index.pug`, pugTemplate, 'utf8');
-				writeFile(`${process.cwd()}/partials/header.pug`, pugHeaderTemplate, 'utf8');
-				writeFile(`${process.cwd()}/partials/footer.pug`, pugFooterTemplate, 'utf8');
-				break;
-			case 'HAML':
-				return writeFile(`${process.cwd()}/index.haml`, hamlTemplate, 'utf8');
-			case 'Nunjucks':
-				return writeFile(`${process.cwd()}/index.html`, nunjucksTemplate, 'utf8');
-		}
-	} catch (err) {
-		console.log(chalk.red.bold('ERROR'));
-		console.log(chalk.red(err));
+	switch (options.html) {
+		case 'HTML5':
+			fs.writeFileSync(`${process.cwd()}/index.html`, htmlTemplate, 'utf8');
+			fs.writeFileSync(`${process.cwd()}/partials/header.html`, htmlHeaderTemplate, 'utf8');
+			fs.writeFileSync(`${process.cwd()}/partials/footer.html`, htmlFooterTemplate, 'utf8');
+			break;
+		case 'Pug':
+			fs.writeFileSync(`${process.cwd()}/index.pug`, pugTemplate, 'utf8');
+			fs.writeFileSync(`${process.cwd()}/partials/header.pug`, pugHeaderTemplate, 'utf8');
+			fs.writeFileSync(`${process.cwd()}/partials/footer.pug`, pugFooterTemplate, 'utf8');
+			break;
+		case 'HAML':
+			fs.writeFileSync(`${process.cwd()}/index.haml`, hamlTemplate, 'utf8');
+			break;
+		case 'Nunjucks':
+			fs.writeFileSync(`${process.cwd()}/index.html`, nunjucksTemplate, 'utf8');
+			break;
 	}
 };
 export default createHTML;

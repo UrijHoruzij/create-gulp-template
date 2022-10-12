@@ -4,7 +4,6 @@ import fs from 'fs';
 import Listr from 'listr';
 import { projectInstall } from 'pkg-install';
 import license from 'spdx-license-list/licenses/MIT';
-import { promisify } from 'util';
 import createGulpFile from './createGulpfile';
 import createGitignore from './createGitignore';
 import createPackage from './createPackage';
@@ -14,8 +13,7 @@ import createJS from './createJS';
 import createCSS from './createCSS';
 import createFiles from './createFiles';
 import createLib from './createLib';
-
-const writeFile = promisify(fs.writeFile);
+import createSnippets from './createSnippets';
 
 const createFolder = (options) => {
 	if (fs.existsSync(`${process.cwd()}/${options.nameProject}`)) {
@@ -30,7 +28,8 @@ const createLicense = async (options) => {
 	const licenseContent = license.licenseText
 		.replace('<year>', new Date().getFullYear())
 		.replace('<copyright holders>', `${options.name}`);
-	return writeFile(`${process.cwd()}/LICENSE`, licenseContent, 'utf8');
+	fs.writeFileSync(`${process.cwd()}/LICENSE`, licenseContent, 'utf8');
+	return;
 };
 const initGit = async () => {
 	const result = await execa('git', ['init'], {
@@ -46,7 +45,6 @@ export const createProject = async (options) => {
 		...options,
 		name: 'Urij Horuzij',
 	};
-
 	const tasks = new Listr(
 		[
 			{
@@ -66,6 +64,7 @@ export const createProject = async (options) => {
 					createCSS(options);
 					createGulpFile(options);
 					createLib(options);
+					createSnippets();
 				},
 			},
 			{
@@ -85,7 +84,6 @@ export const createProject = async (options) => {
 			exitOnError: false,
 		},
 	);
-
 	await tasks.run();
 	console.log(chalk.green.bold('DONE'));
 	return true;

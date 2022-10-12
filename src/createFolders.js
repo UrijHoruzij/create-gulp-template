@@ -10,7 +10,7 @@ const createJsFolders = (prefix) => {
 	fs.mkdirSync(prefix);
 	fs.mkdirSync(`${prefix}/vendor`);
 };
-const createFolders = async (options) => {
+const createFolders = (options) => {
 	fs.mkdirSync('img');
 	fs.mkdirSync('partials');
 	fs.mkdirSync('resources');

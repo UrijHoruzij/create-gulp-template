@@ -1,32 +1,24 @@
 import fs from 'fs';
-import chalk from 'chalk';
-import { promisify } from 'util';
 import { changePathJS } from './util';
-const writeFile = promisify(fs.writeFile);
 
 const createJS = async (options) => {
-	try {
-		const contentMain = `/**
+	const contentMain = `/**
         * название функции
         *
         * @param {number} first - первое число
-        * @returns {number}
+        * @returns {number}x
         */`;
-		const pathJS = changePathJS(options);
-		switch (options.js) {
-			case 'JavaScript':
-				writeFile(`${process.cwd()}/${pathJS}/main.js`, contentMain, 'utf8');
-				break;
-			case 'TypeScript':
-				writeFile(`${process.cwd()}/${pathJS}/main.ts`, contentMain, 'utf8');
-				break;
-			case 'CoffeeScript':
-				writeFile(`${process.cwd()}/${pathJS}/main.coffee`, contentMain, 'utf8');
-				break;
-		}
-	} catch (err) {
-		console.log(chalk.red.bold('ERROR'));
-		console.log(chalk.red(err));
+	const pathJS = changePathJS(options);
+	switch (options.js) {
+		case 'JavaScript':
+			fs.writeFileSync(`${process.cwd()}/${pathJS}/main.js`, contentMain, 'utf8');
+			break;
+		case 'TypeScript':
+			fs.writeFileSync(`${process.cwd()}/${pathJS}/main.ts`, contentMain, 'utf8');
+			break;
+		case 'CoffeeScript':
+			fs.writeFileSync(`${process.cwd()}/${pathJS}/main.coffee`, contentMain, 'utf8');
+			break;
 	}
 };
 export default createJS;

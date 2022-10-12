@@ -1,7 +1,7 @@
 {
 	"name": "create-gulp-template",
 	"description": "",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"main": "src/index.js",
 	"scripts": {
 		"build": "cd doc && npm run build",
@@ -52,8 +52,7 @@
 		"normalize.css": "^8.0.1",
 		"pkg-install": "^1.0.0",
 		"slick-carousel": "^1.8.1",
-		"spdx-license-list": "^6.4.0",
-		"util": "^0.12.4"
+		"spdx-license-list": "^6.4.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.0.0",

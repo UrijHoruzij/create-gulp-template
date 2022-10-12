@@ -1,7 +1,5 @@
 import fs from 'fs';
-import { promisify } from 'util';
 import { changePathHTML, changePathCSS, changePathJS } from './util';
-const writeFile = promisify(fs.writeFile);
 
 const htmlLibrary = (options) => {
 	switch (options.html) {
@@ -235,7 +233,7 @@ export const build = series(
 export const deploy = series(deployBuild);
 export const cache = series(cachePublic, rewrite);
   `;
-	writeFile(`${process.cwd()}/gulpfile.js`, gulpfileTemplate, 'utf8');
+	fs.writeFileSync(`${process.cwd()}/gulpfile.js`, gulpfileTemplate, 'utf8');
 };
 
 export default createGulpFile;

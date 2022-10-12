@@ -1,0 +1,59 @@
+{
+	"navigation": {
+		"scope": "html",
+		"prefix": "c-nav",
+		"body": [
+			"<nav class=\"nav\" title=\"$1\">",
+			"  <ul class=\"nav__list\">",
+			"    <li class=\"nav__item\"><a href=\"#\" class=\"nav__link\"></a></li>",
+			"    <li class=\"nav__item\"><a href=\"#\" class=\"nav__link\"></a></li>",
+			"    <li class=\"nav__item\"><a href=\"#\" class=\"nav__link\"></a></li>",
+			"  </ul>",
+			"</nav>"
+		],
+		"description": "Snippet for navigation"
+	},
+	"basicform": {
+		"scope": "html",
+		"prefix": "c-form",
+		"body": [
+			"<form action=\"#\" class=\"form\">",
+			"  <label class=\"form__label\">",
+			"    <input type=\"text\" name=\"Имя\" class=\"form__input\" placeholder=\"Имя\">",
+			"  </label>",
+			"  <button class=\"form__btn\">Отправить</button>",
+			"</form>"
+		],
+		"description": "Snippet for basic form"
+	},
+	"basicswiper": {
+		"scope": "html",
+		"prefix": "c-swiper",
+		"body": [
+			"<div class=\"swiper $1\">",
+			"  <div class=\"swiper-wrapper\">",
+			"     <div class=\"swiper-slide\">",
+			"     </div>",
+			"  </div>",
+			"</div>"
+		],
+		"description": "Snippet for basic swiper structure"
+	},
+	"picture": {
+		"scope": "html",
+		"prefix": "c-picture",
+		"body": [
+			"<picture>",
+			"  <source srcset=\"$1.webp\" type=\"image/webp\">",
+			"  <img loading=\"lazy\" src=\"$1.$2\" class=\"image\" width=\"$4\" height=\"$5\" alt=\"$3\">",
+			"</picture>"
+		],
+		"description": "Snippet for basic logo structure"
+	},
+	"svgimg": {
+		"scope": "html",
+		"prefix": "c-img",
+		"body": ["<img loading=\"lazy\" src=\"$1.$2\" class=\"image\" width=\"$4\" height=\"$5\" alt=\"$3\">"],
+		"description": "Snippet for simple html svg images"
+	}
+}
