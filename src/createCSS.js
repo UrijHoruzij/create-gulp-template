@@ -1,12 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import { changePathCSS, pathNodeModules } from './util';
+import { changePathCSS, pathModule } from './util';
 
 const createCSS = async (options) => {
-	const contentNormalize = fs.readFileSync(
-		pathNodeModules(path, '../node_modules/normalize.css/normalize.css'),
-		'utf8',
-	);
+	const contentNormalize = fs.readFileSync(pathModule(path, '../node_modules/normalize.css/normalize.css'), 'utf8');
 	const contentMain = `@import "vars";
 @import "mixins";
 @import "fonts";`;

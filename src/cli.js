@@ -30,6 +30,8 @@ const promptForMissingOptions = async (options) => {
 			html: 'HTML5',
 			css: 'CSS3',
 			js: 'JavaScript',
+			framework: 'Without a framework',
+			git: false,
 		};
 	}
 	const questions = [

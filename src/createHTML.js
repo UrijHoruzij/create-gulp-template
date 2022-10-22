@@ -15,8 +15,8 @@ const createHTML = async (options) => {
 </head>
 <body>
     <!-- @include('partials/header.html') example include -->
-    <script src="js/vendor.js"></script>
-    <script src="js/main.js"></script>
+    <script defer src="js/vendor.js"></script>
+    <script defer src="js/main.js"></script>
 </body>
 </html>`;
 	const htmlHeaderTemplate = `<header>
@@ -37,8 +37,8 @@ html(lang="ru")
     link(rel="stylesheet" href="css/main.css")
   body
       // include partials/header.pug
-      script(src="js/vendor.js")
-      script(src="js/main.js")`;
+      script(src="js/vendor.js",defer)
+      script(src="js/main.js",defer)`;
 	const pugHeaderTemplate = `header`;
 	const pugFooterTemplate = `footer`;
 	const hamlTemplate = `!!! 5
@@ -52,8 +52,8 @@ html(lang="ru")
     %link{href:"css/vendor.css", type: "text/css", rel:"stylesheet"}
     %link{href:"css/main.css", type:"text/css", rel:"stylesheet"}
   %body 
-    %script{src:"js/vendor.js"}
-    %script{src:"js/main.js"}
+    %script{src:"js/vendor.js" defer}
+    %script{src:"js/main.js" defer}
   `;
 	const nunjucksTemplate = `<!doctype html>
 <html lang="ru">
@@ -68,8 +68,8 @@ html(lang="ru")
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>        
-  <script src="js/vendor.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="js/vendor.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>
   `;

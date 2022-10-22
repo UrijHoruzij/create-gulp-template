@@ -32,6 +32,6 @@ export const changePathJS = (options) => {
 			return 'coffee';
 	}
 };
-export const pathNodeModules = (path, pathFile) => {
+export const pathModule = (path, pathFile) => {
 	return path.resolve(path.dirname(__filename), pathFile);
 };

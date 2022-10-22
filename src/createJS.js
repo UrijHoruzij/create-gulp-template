@@ -6,7 +6,7 @@ const createJS = async (options) => {
         * название функции
         *
         * @param {number} first - первое число
-        * @returns {number}x
+        * @returns {number}
         */`;
 	const pathJS = changePathJS(options);
 	switch (options.js) {
