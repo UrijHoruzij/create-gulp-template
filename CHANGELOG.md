@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v4.0.0...v5.0.0) (2022-10-22)
+
+
+### Features
+
+* replacing the command readFileSync and writeFileSync with copyFileSync ([ba11733](https://github.com/UrijHoruzij/create-gulp-template/commit/ba11733d22101c5400decdb4f510c0b2474698f2))
+
+
+### BREAKING CHANGES
+
+* refactor code
+
 # [4.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v3.0.3...v4.0.0) (2022-10-12)
 
 
