@@ -1,6 +1,6 @@
 {
 	"name": "create-gulp-template",
-	"description": "",
+	"description": "Set up a modern gulp build by running a single command.",
 	"version": "5.0.0",
 	"main": "src/index.js",
 	"scripts": {
@@ -27,10 +27,22 @@
 		"nunjucks",
 		"javascript",
 		"typescript",
-		"coffeescript"
+		"coffeescript",
+		"bootstrap",
+		"bootstrap3",
+		"bootstrap4",
+		"bootstrap5",
+		"libraries"
 	],
 	"author": "Urij Horuzij",
 	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/UrijHoruzij/create-gulp-template/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/UrijHoruzij/create-gulp-template.git"
+	},
 	"dependencies": {
 		"arg": "^5.0.1",
 		"bootstrap3": "npm:bootstrap@3.4.1",
