@@ -11,7 +11,7 @@
     </a>
   </p>
 
-The easiest way to get started with gulp is to use create—gulp-template. This command line tool allows you to quickly start creating a new gulp build with all the settings for you.
+The easiest way to get started with gulp is to use create-gulp-template. This command line tool allows you to quickly start creating a new gulp build with all the settings for you.
 
 ## Getting Started
 
