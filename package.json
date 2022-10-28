@@ -1,7 +1,7 @@
 {
 	"name": "create-gulp-template",
 	"description": "Set up a modern gulp build by running a single command.",
-	"version": "5.0.0",
+	"version": "5.1.0",
 	"main": "src/index.js",
 	"scripts": {
 		"build": "cd doc && npm run build",

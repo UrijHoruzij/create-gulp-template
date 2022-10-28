@@ -1,3 +1,15 @@
+# [5.1.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v5.0.0...v5.1.0) (2022-10-28)
+
+
+### Bug Fixes
+
+* edit readme file ([56503ac](https://github.com/UrijHoruzij/create-gulp-template/commit/56503ac98463fdd3e9c649d4c02a1d39eea5ee30))
+
+
+### Features
+
+* add license file ([3516c25](https://github.com/UrijHoruzij/create-gulp-template/commit/3516c25a1b97a71fd5ee3e7476777f315b59b6b3))
+
 # [5.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v4.0.0...v5.0.0) (2022-10-22)
 
 
