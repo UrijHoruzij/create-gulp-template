@@ -5,7 +5,7 @@ export const changePathHTML = (options) => {
 		case 'Pug':
 			return `pug`;
 		case 'HAML':
-			retunr`haml`;
+			return `haml`;
 		case 'Nunjucks':
 			return `njk`;
 	}
@@ -17,7 +17,7 @@ export const changePathCSS = (options) => {
 		case 'LESS':
 			return `less`;
 		case 'Stylus':
-			retunr`stylus`;
+			return `stylus`;
 		case 'CSS3':
 			return `css`;
 	}

@@ -1,94 +1,31 @@
 import fs from 'fs';
+import path from 'path';
+import { pathModule } from './util';
 
 const createHTML = async (options) => {
-	const htmlTemplate = `<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <meta name="theme-color" content="#111111">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-    <!-- @include('partials/header.html') example include -->
-    <script defer src="js/vendor.js"></script>
-    <script defer src="js/main.js"></script>
-</body>
-</html>`;
 	const htmlHeaderTemplate = `<header>
   </header>
 `;
 	const htmlFooterTemplate = `<footer>
   </footer>`;
-	const pugTemplate = `doctype html
-html(lang="ru")
-  head
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    link(rel="shortcut icon" href="img/favicon.ico" type="image/x-icon")
-    meta(name="theme-color" content="#111111")
-    title= "Document"
-    link(rel="stylesheet" href="css/vendor.css")
-    link(rel="stylesheet" href="css/main.css")
-  body
-      // include partials/header.pug
-      script(src="js/vendor.js",defer)
-      script(src="js/main.js",defer)`;
 	const pugHeaderTemplate = `header`;
 	const pugFooterTemplate = `footer`;
-	const hamlTemplate = `!!! 5
-%html
-  %head
-    %meta{charset: "utf-8"}
-    %meta{name:"viewport", content:"width:device-width, initial-scale=1.0"}
-    %link{href:"img/favicon.ico", type:"image/x-icon", rel:"shortcut icon"}
-    %meta{name:"theme-color", content:"#111111"}
-    %title Document
-    %link{href:"css/vendor.css", type: "text/css", rel:"stylesheet"}
-    %link{href:"css/main.css", type:"text/css", rel:"stylesheet"}
-  %body 
-    %script{src:"js/vendor.js" defer}
-    %script{src:"js/main.js" defer}
-  `;
-	const nunjucksTemplate = `<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <meta name="theme-color" content="#111111">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body>        
-  <script defer src="js/vendor.js"></script>
-  <script defer src="js/main.js"></script>
-</body>
-</html>
-  `;
 	switch (options.html) {
 		case 'HTML5':
-			fs.writeFileSync(`${process.cwd()}/index.html`, htmlTemplate, 'utf8');
+			fs.copyFileSync(pathModule(path, './template/html/html.html'), `${process.cwd()}/index.html`);
 			fs.writeFileSync(`${process.cwd()}/partials/header.html`, htmlHeaderTemplate, 'utf8');
 			fs.writeFileSync(`${process.cwd()}/partials/footer.html`, htmlFooterTemplate, 'utf8');
 			break;
 		case 'Pug':
-			fs.writeFileSync(`${process.cwd()}/index.pug`, pugTemplate, 'utf8');
+			fs.copyFileSync(pathModule(path, './template/html/pug.pug'), `${process.cwd()}/index.pug`);
 			fs.writeFileSync(`${process.cwd()}/partials/header.pug`, pugHeaderTemplate, 'utf8');
 			fs.writeFileSync(`${process.cwd()}/partials/footer.pug`, pugFooterTemplate, 'utf8');
 			break;
 		case 'HAML':
-			fs.writeFileSync(`${process.cwd()}/index.haml`, hamlTemplate, 'utf8');
+			fs.copyFileSync(pathModule(path, './template/html/haml.haml'), `${process.cwd()}/index.haml`);
 			break;
 		case 'Nunjucks':
-			fs.writeFileSync(`${process.cwd()}/index.html`, nunjucksTemplate, 'utf8');
+			fs.copyFileSync(pathModule(path, './template/html/nunjucks.html'), `${process.cwd()}/index.html`);
 			break;
 	}
 };

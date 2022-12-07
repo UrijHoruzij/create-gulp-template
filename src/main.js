@@ -4,16 +4,18 @@ import fs from 'fs';
 import Listr from 'listr';
 import { projectInstall } from 'pkg-install';
 import license from 'spdx-license-list/licenses/MIT';
-import createGulpFile from './createGulpfile';
-import createGitignore from './createGitignore';
-import createPackage from './createPackage';
-import createFolders from './createFolders';
-import createHTML from './createHTML';
-import createJS from './createJS';
-import createCSS from './createCSS';
-import createFiles from './createFiles';
-import createLib from './createLib';
-import createSnippets from './createSnippets';
+import {
+	createGulpFile,
+	createGitignore,
+	createPackage,
+	createFolders,
+	createHTML,
+	createJS,
+	createCSS,
+	createFiles,
+	createLib,
+	createSnippets,
+} from './';
 
 const createFolder = (options) => {
 	if (fs.existsSync(`${process.cwd()}/${options.nameProject}`)) {
@@ -72,13 +74,13 @@ export const createProject = async (options) => {
 				task: () => initGit(),
 				enabled: () => options.git,
 			},
-			{
-				title: 'Install dependencies',
-				task: () =>
-					projectInstall({
-						cwd: process.cwd(),
-					}),
-			},
+			// {
+			// 	title: 'Install dependencies',
+			// 	task: () =>
+			// 		projectInstall({
+			// 			cwd: process.cwd(),
+			// 		}),
+			// },
 		],
 		{
 			exitOnError: false,
