@@ -1,7 +1,7 @@
 {
 	"name": "create-gulp-template",
 	"description": "Set up a modern gulp build by running a single command.",
-	"version": "5.1.0",
+	"version": "5.2.0",
 	"main": "src/cli.js",
 	"scripts": {
 		"build": "cd doc && npm run build",
@@ -48,7 +48,7 @@
 		"bootstrap3": "npm:bootstrap@3.4.1",
 		"bootstrap4": "npm:bootstrap@4.6.2",
 		"bootstrap5": "npm:bootstrap@5.2.1",
-		"chalk": "^4.1.2",
+		"chalk": "^5.1.2",
 		"clear": "^0.1.0",
 		"esm": "^3.2.25",
 		"execa": "^5.0.0",
@@ -56,7 +56,7 @@
 		"fotorama": "^4.6.4",
 		"fullpage-js-geek": "^3.0.8",
 		"gsap": "^3.11.1",
-		"inquirer": "^8.1.2",
+		"inquirer": "^9.1.4",
 		"jquery": "^3.6.1",
 		"listr": "^0.14.3",
 		"locomotive-scroll": "^4.1.4",

@@ -1,3 +1,17 @@
+# [5.2.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v5.1.1...v5.2.0) (2022-11-21)
+
+
+### Features
+
+* add dependabot.yml ([00c3456](https://github.com/UrijHoruzij/create-gulp-template/commit/00c3456770f6590982e5a77a7bab2dbf56c8a19f))
+
+## [5.1.1](https://github.com/UrijHoruzij/create-gulp-template/compare/v5.1.0...v5.1.1) (2022-10-28)
+
+
+### Bug Fixes
+
+* edit readme file ([365ec62](https://github.com/UrijHoruzij/create-gulp-template/commit/365ec620435f03ef99b279ca2e06e500f4918c20))
+
 # [5.1.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v5.0.0...v5.1.0) (2022-10-28)
 
 
