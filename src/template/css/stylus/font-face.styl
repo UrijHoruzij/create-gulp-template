@@ -1,0 +1,11 @@
+font-url(file)
+  return '../fonts/' + file
+
+webfont(family, file,weight, style)
+  @font-face
+    font-family family
+    src url(font-url(file + '.woff2')) format('woff2'), 
+    font-weight weight
+    font-style normal
+    font-display swap
+    font-style style
