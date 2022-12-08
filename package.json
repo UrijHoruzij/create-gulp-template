@@ -1,7 +1,7 @@
 {
 	"name": "create-gulp-template",
 	"description": "Set up a modern gulp build by running a single command.",
-	"version": "5.2.0",
+	"version": "6.0.0",
 	"main": "src/cli.js",
 	"scripts": {
 		"build": "cd doc && npm run build",
@@ -69,7 +69,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.0.0",
 		"@commitlint/config-conventional": "^17.0.0",
-		"@semantic-release/changelog": "^6.0.1",
+		"@semantic-release/changelog": "^6.0.2",
 		"@semantic-release/git": "^10.0.1",
 		"husky": "^8.0.1",
 		"prettier": "^2.5.1"
