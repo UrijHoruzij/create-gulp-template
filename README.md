@@ -6,7 +6,7 @@
     <a aria-label="NPM version" href="https://www.npmjs.com/package/create-gulp-template">
       <img alt="npm" src="https://img.shields.io/npm/v/create-gulp-template?color=%23d34a47">
     </a>
-    <a aria-label="License" href="https://github.com/UrijHoruzij/create-gulp-template/LICENSE.md">
+    <a aria-label="License" href="https://github.com/UrijHoruzij/create-gulp-template/blob/master/LICENSE">
       <img alt="NPM" src="https://img.shields.io/npm/l/create-gulp-template?color=%23d34a47">
     </a>
   </p>
