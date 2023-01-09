@@ -27,4 +27,4 @@ If you have any questions or need help, please refer to the [documentation](http
 
 ## License
 
-Create Gulp Template is released under the [MIT License](https://github.com/UrijHoruzij/create-gulp-template/LICENSE.md).
+Create Gulp Template is released under the [MIT License](https://github.com/UrijHoruzij/create-gulp-template/blob/master/LICENSE).
