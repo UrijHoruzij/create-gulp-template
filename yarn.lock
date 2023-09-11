@@ -1715,11 +1715,6 @@ punycode@^2.1.0:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-q@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.npmjs.org/q/-/q-1.5.1.tgz"
-  integrity sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==
-
 quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-4.0.1.tgz"
@@ -1932,9 +1927,9 @@ spdx-license-ids@^3.0.0:
   integrity sha512-rr+VVSXtRhO4OHbXUiAF7xW3Bo9DuuF6C5jH+q/x15j2jniycgKbxU09Hr0WqlSLUs4i4ltHGXqTe7VHclYWyA==
 
 spdx-license-list@^6.4.0:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/spdx-license-list/-/spdx-license-list-6.6.0.tgz#403e1807fd87ef2b4781677bc91896d23eaed4ea"
-  integrity sha512-vLwdf9AWgdJQmG8cai2HKfkInFsliKaCCOwXmdVonClIhdURTX61KdDOoXC1qcQ7gDaZj+CUTcrMJeAdnCtrKA==
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/spdx-license-list/-/spdx-license-list-6.7.0.tgz#dd8c6aba00e7a3f9549e473d0be2b83c4cae081f"
+  integrity sha512-NFqavuJxNsHdwSy/0PjmUpcc76XwlmHQRPjVVtE62qmSLhKJUnzSvJCkU9nrY6TsChfGU1xqGePriBkNtNRMiA==
 
 split2@^3.0.0, split2@^3.2.2:
   version "3.2.2"
