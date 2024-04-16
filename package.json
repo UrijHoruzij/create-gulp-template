@@ -51,7 +51,7 @@
 		"chalk": "^5.1.2",
 		"clear": "^0.1.0",
 		"esm": "^3.2.25",
-		"execa": "^7.0.0",
+		"execa": "^8.0.1",
 		"figlet": "^1.5.0",
 		"fotorama": "^4.6.4",
 		"fullpage-js-geek": "^3.0.8",
