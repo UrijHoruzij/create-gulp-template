@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v6.1.1...v6.2.0) (2025-12-30)
+
+
+### Features
+
+* refactoring code ([5644e10](https://github.com/UrijHoruzij/create-gulp-template/commit/5644e10c7caff6343a6a33891ff177a659984c7d))
+
 ## [6.1.1](https://github.com/UrijHoruzij/create-gulp-template/compare/v6.1.0...v6.1.1) (2025-12-30)
 
 
