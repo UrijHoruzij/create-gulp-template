@@ -21,21 +21,17 @@ layout: layouts/post.njk
 ├── src/                          # Sources
 │   ├── js                        # Scripts
 │   │   ├── main.js               # Main script
-│   │   ├── components            # Js-components
 │   │   ├── vendor                # The folder for downloading local versions of libraries
 │   ├── less                      # Site styles (less preprocessor)
 │   │   └── main.less             # Main Style file
-│   │   └── global.less           # The file with global settings - resets, fonts, etc.
 │   │   └── vendor.less           # The file for connecting library styles from the vendor folder
 │   │   └── fonts.less            # The file for connecting fonts (you can use a mixin)
 │   │   └── mixins.less           # The file for connecting mixins from the mixins folder
 │   │   └── vars.less             # The file for writing css - or less-variables
-│   │   ├── components            # Less-components
 │   │   ├── mixins                # The folder for saving ready-made less components
 │   │   ├── vendor                # The folder for storing local css styles of libraries
 │   ├── partials                  # The folder for storing html parts of the page
 │   ├── img                       # The folder for storing images
-│   │   ├── svg                   # The special folder for converting svg to sprite
 │   ├── resources                 # The folder for storing other assets - php, video files, favicon, etc.
 │   │   ├── fonts                 # The folder for storing fonts in the woff2 format
 │   └── index.html                # Main html-file

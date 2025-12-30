@@ -1,10 +1,9 @@
-export { default as createGulpFile } from './createGulpFile';
-export { default as createGitignore } from './createGitignore';
 export { default as createPackage } from './createPackage';
 export { default as createFolders } from './createFolders';
+export { default as createLicense } from './createLicense';
+export { default as createSnippets } from './createSnippets';
 export { default as createHTML } from './createHTML';
 export { default as createJS } from './createJS';
 export { default as createCSS } from './createCSS';
 export { default as createFiles } from './createFiles';
-export { default as createLib } from './createLib';
-export { default as createSnippets } from './createSnippets';
+export { default as createGulpFile } from './createGulpfile';
