@@ -1,3 +1,13 @@
+## [6.1.1](https://github.com/UrijHoruzij/create-gulp-template/compare/v6.1.0...v6.1.1) (2025-12-30)
+
+
+### Bug Fixes
+
+* fixed ([ecec9cd](https://github.com/UrijHoruzij/create-gulp-template/commit/ecec9cd12728e4a9e95d6d422e9824d7cae498e8))
+* fixed ([7b500f8](https://github.com/UrijHoruzij/create-gulp-template/commit/7b500f8c2740f96bc6d0a847423714a6d52417a0))
+* fixed ([e9aaaa7](https://github.com/UrijHoruzij/create-gulp-template/commit/e9aaaa72614abe794b6d0a5abf49936a951303c5))
+* fixed gitinore ([5d4c619](https://github.com/UrijHoruzij/create-gulp-template/commit/5d4c61978bca102c8bce8190347d488a61fae2cc))
+
 # [6.1.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v6.0.0...v6.1.0) (2025-12-30)
 
 
