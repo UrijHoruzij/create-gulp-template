@@ -5,14 +5,15 @@ on:
     branches:
       - master
 
-permissions:
-  id-token: write # Required for OIDC
-  contents: read
-
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Даем права на запись содержимого
+      issues: write # Права на работу с issues
+      pull-requests: write # Права на PR
+      id-token: write # Для OIDC аутентификации
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -33,6 +34,11 @@ jobs:
   doc:
     name: Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Даем права на запись содержимого
+      issues: write # Права на работу с issues
+      pull-requests: write # Права на PR
+      id-token: write # Для OIDC аутентификации
     needs: [release]
     steps:
       - name: Checkout
