@@ -7,22 +7,9 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check NPM_TOKEN exists
-        run: |
-          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
-            echo "❌ NPM_TOKEN is not set"
-            exit 1
-          else
-            echo "✅ NPM_TOKEN is set"
-            echo "Token length: ${#NPM_TOKEN}"
-          fi
+     - name: Check NPM authentication
+        run: npm whoami --registry https://registry.npmjs.org/
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       
-      - name: Test npm authentication
-        run: |
-          # Проверяем аутентификацию
-          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          npm whoami || echo "❌ Authentication failed"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    
