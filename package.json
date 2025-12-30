@@ -1,7 +1,7 @@
 {
 	"name": "create-gulp-template",
 	"description": "Set up a modern gulp build by running a single command.",
-	"version": "7.0.2",
+	"version": "7.0.3",
 	"type": "module",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
@@ -68,7 +68,8 @@
 		"rollup-plugin-cleaner": "^1.0.0",
 		"rollup-plugin-copy": "^3.5.0",
 		"rollup-plugin-node-externals": "^8.1.2",
-		"rollup-plugin-typescript2": "^0.36.0"
+		"rollup-plugin-typescript2": "^0.36.0",
+		"semantic-release": "^25.0.2"
 	},
 	"preferGlobal": true
 }
