@@ -1,7 +1,7 @@
 {
 	"name": "create-gulp-template",
 	"description": "Set up a modern gulp build by running a single command.",
-	"version": "7.0.0",
+	"version": "7.0.1",
 	"type": "module",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
@@ -10,7 +10,7 @@
 		"dev": "rollup -c -w",
 		"build:doc": "cd doc && npm run build",
 		"start": "cd doc && npm run start",
-		"prepare": "husky install"
+		"prepare": "husky"
 	},
 	"bin": {
 		"create-gulp-template": "./bin/create-gulp-template",
