@@ -1,3 +1,20 @@
+# [6.1.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v6.0.0...v6.1.0) (2025-12-30)
+
+
+### Bug Fixes
+
+* fixed github action ([66f1cd4](https://github.com/UrijHoruzij/create-gulp-template/commit/66f1cd4a5480a854d1648dce0922ef2ed7ecf4cd))
+* fixed github action" ([6e811eb](https://github.com/UrijHoruzij/create-gulp-template/commit/6e811ebb8733eee948a89456fb8e6e655174ac74))
+* fixed husky ([34d0f87](https://github.com/UrijHoruzij/create-gulp-template/commit/34d0f875d17d613410ccde5fab3bc0a094ced7b8))
+* fixed husky ([4b5b0a5](https://github.com/UrijHoruzij/create-gulp-template/commit/4b5b0a5d1fd5a4bb4094407ff830e5b6795539a1))
+* fixed husky ([b194360](https://github.com/UrijHoruzij/create-gulp-template/commit/b1943607c88520fa7f97dc363d5a3b5440bf7934))
+* fixed semantic-release ([31bcd71](https://github.com/UrijHoruzij/create-gulp-template/commit/31bcd7193828816c732809de7caee4ab661bccf4))
+
+
+### Features
+
+* add typescript and update packages ([0adf7b3](https://github.com/UrijHoruzij/create-gulp-template/commit/0adf7b34afb06a9b2616b64f3c3f232dd81bb033))
+
 # [6.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v5.2.0...v6.0.0) (2022-12-08)
 
 ### Features
