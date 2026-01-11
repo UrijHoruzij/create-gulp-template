@@ -1,3 +1,15 @@
+# [7.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v6.4.0...v7.0.0) (2026-01-11)
+
+
+### chore
+
+* update dependencies ([a36d29f](https://github.com/UrijHoruzij/create-gulp-template/commit/a36d29f4e58c0ecfcb79df0c7231227a71f27ade))
+
+
+### BREAKING CHANGES
+
+* update dependencies and add Typescript
+
 # [6.4.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v6.3.0...v6.4.0) (2025-12-30)
 
 
