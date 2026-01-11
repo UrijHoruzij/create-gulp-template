@@ -54,8 +54,8 @@
 		"spdx-license-list": "^6.10.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^20.2.0",
-		"@commitlint/config-conventional": "^20.2.0",
+		"@commitlint/cli": "^20.3.1",
+		"@commitlint/config-conventional": "^20.3.1",
 		"@rollup/plugin-commonjs": "^29.0.0",
 		"@rollup/plugin-node-resolve": "^16.0.3",
 		"@semantic-release/changelog": "^6.0.3",
@@ -64,7 +64,7 @@
 		"@types/listr": "^0.14.10",
 		"husky": "^9.1.7",
 		"prettier": "^3.7.4",
-		"rollup": "^4.54.0",
+		"rollup": "^4.55.1",
 		"rollup-plugin-cleaner": "^1.0.0",
 		"rollup-plugin-copy": "^3.5.0",
 		"rollup-plugin-node-externals": "^8.1.2",
