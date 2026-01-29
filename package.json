@@ -2,7 +2,6 @@
 	"name": "create-gulp-template",
 	"description": "Set up a modern gulp build by running a single command.",
 	"version": "7.0.0",
-	"type": "module",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"scripts": {
