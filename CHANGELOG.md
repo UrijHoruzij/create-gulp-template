@@ -1,3 +1,10 @@
+## [7.0.3](https://github.com/UrijHoruzij/create-gulp-template/compare/v7.0.2...v7.0.3) (2026-01-29)
+
+
+### Bug Fixes
+
+* fixed bin file ([5972038](https://github.com/UrijHoruzij/create-gulp-template/commit/5972038007e88ad5a4d9007918e1a8267ca4d0ba))
+
 ## [7.0.2](https://github.com/UrijHoruzij/create-gulp-template/compare/v7.0.1...v7.0.2) (2026-01-29)
 
 
