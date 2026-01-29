@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/UrijHoruzij/create-gulp-template/compare/v7.0.0...v7.0.1) (2026-01-29)
+
+
+### Bug Fixes
+
+* fixed index.js ([ccf0535](https://github.com/UrijHoruzij/create-gulp-template/commit/ccf0535f56582943227304fbc61ca32a20dc98dd))
+
 # [7.0.0](https://github.com/UrijHoruzij/create-gulp-template/compare/v6.4.0...v7.0.0) (2026-01-11)
 
 
